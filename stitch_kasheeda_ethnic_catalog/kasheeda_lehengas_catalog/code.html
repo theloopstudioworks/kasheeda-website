@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kasheeda - Lehengas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#a9a8a4",
+                      "surface-container-low": "#fbf2ed",
+                      "surface-container-high": "#efe6e2",
+                      "on-secondary-fixed": "#261900",
+                      "surface": "#fff8f5",
+                      "surface-container": "#f5ece7",
+                      "on-background": "#1e1b18",
+                      "surface-dim": "#e1d8d4",
+                      "inverse-on-surface": "#f8efea",
+                      "primary-container": "#800020",
+                      "surface-container-highest": "#e9e1dc",
+                      "secondary-fixed-dim": "#e9c176",
+                      "on-primary-container": "#ff828a",
+                      "surface-tint": "#af2b3e",
+                      "on-primary-fixed-variant": "#8e0f28",
+                      "outline": "#8c7071",
+                      "tertiary": "#272725",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#ffdea5",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#fff8f5",
+                      "on-surface": "#1e1b18",
+                      "on-secondary-container": "#785a1a",
+                      "on-surface-variant": "#584141",
+                      "secondary-container": "#fed488",
+                      "primary": "#570013",
+                      "surface-bright": "#fff8f5",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#ffb3b5",
+                      "outline-variant": "#e0bfbf",
+                      "secondary": "#775a19",
+                      "inverse-surface": "#34302c",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "on-error": "#ffffff",
+                      "tertiary-container": "#3d3d3b",
+                      "on-tertiary-fixed": "#1b1c1a",
+                      "tertiary-fixed-dim": "#c8c6c3",
+                      "tertiary-fixed": "#e4e2de",
+                      "on-primary-fixed": "#40000b",
+                      "surface-variant": "#e9e1dc",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#5d4201",
+                      "inverse-primary": "#ffb3b5",
+                      "primary-fixed": "#ffdada",
+                      "on-tertiary-fixed-variant": "#474744"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "base": "8px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "\"Source Sans 3\""
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "headline-sm": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "\"Source Sans 3\""
+                      ],
+                      "label-caps": [
+                              "\"Source Sans 3\""
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+          }
+          
+          /* Hide scrollbar for clean aesthetic */
+          ::-webkit-scrollbar {
+              width: 8px;
+          }
+          ::-webkit-scrollbar-track {
+              background: #fff8f5; 
+          }
+          ::-webkit-scrollbar-thumb {
+              background: #e0bfbf; 
+          }
+          ::-webkit-scrollbar-thumb:hover {
+              background: #8c7071; 
+          }
+      </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation -->
+<nav class="sticky top-0 w-full z-50 bg-surface/80 backdrop-blur-md dark:bg-surface-container/80 border-b border-outline-variant/30 flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto transition-all duration-300">
+<div class="flex-1 md:hidden">
+<!-- Mobile Menu Trigger -->
+<button class="p-2 -ml-2 text-primary hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+<div class="hidden md:flex gap-gutter items-center flex-1 font-label-caps text-label-caps">
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Lehengas</a>
+<a class="text-on-surface-variant font-label-caps hover:text-primary transition-colors duration-300" href="#">Sarees</a>
+<a class="text-on-surface-variant font-label-caps hover:text-primary transition-colors duration-300" href="#">Kurtas</a>
+<a class="text-on-surface-variant font-label-caps hover:text-primary transition-colors duration-300" href="#">Collections</a>
+<a class="text-on-surface-variant font-label-caps hover:text-primary transition-colors duration-300" href="#">Journal</a>
+</div>
+<div class="flex-shrink-0 text-center">
+<a class="font-display-lg text-display-lg md:text-display-lg text-primary dark:text-primary-fixed-dim tracking-tight" href="#">Kasheeda</a>
+</div>
+<div class="flex-1 flex justify-end gap-4 text-primary dark:text-primary-fixed-dim">
+<button aria-label="Search" class="p-2 hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="Profile" class="p-2 hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100 hidden md:block">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button aria-label="Shopping Bag" class="p-2 hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24">
+<!-- Category Header -->
+<header class="mb-16 text-center max-w-2xl mx-auto">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6">Lehengas</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Discover our curated collection of handcrafted Lehengas, where heritage craftsmanship meets contemporary elegance.</p>
+</header>
+<div class="flex flex-col md:flex-row gap-12 lg:gap-16">
+<!-- Filter Sidebar -->
+<aside class="w-full md:w-64 flex-shrink-0 space-y-8">
+<!-- Mobile Filter Toggle -->
+<div class="md:hidden flex justify-between items-center pb-4 border-b border-outline-variant/30">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Filters</span>
+<button class="text-primary p-2">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</div>
+<div class="hidden md:block space-y-8">
+<!-- Price Filter -->
+<div class="border-b border-outline-variant/30 pb-6">
+<h3 class="font-label-caps text-label-caps text-primary mb-4 flex justify-between items-center cursor-pointer">
+                            Price
+                            <span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</h3>
+<div class="space-y-3 font-body-md text-body-md text-on-surface-variant">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 border border-secondary rounded flex items-center justify-center group-hover:border-primary transition-colors"></div>
+<span>Under ₹50,000</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 border border-secondary rounded flex items-center justify-center group-hover:border-primary transition-colors"></div>
+<span>₹50,000 - ₹1,00,000</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 border border-secondary rounded flex items-center justify-center group-hover:border-primary transition-colors"></div>
+<span>Above ₹1,00,000</span>
+</label>
+</div>
+</div>
+<!-- Color Filter -->
+<div class="border-b border-outline-variant/30 pb-6">
+<h3 class="font-label-caps text-label-caps text-primary mb-4 flex justify-between items-center cursor-pointer">
+                            Color
+                            <span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</h3>
+<div class="flex flex-wrap gap-2">
+<button class="w-8 h-8 rounded-full bg-[#800020] border border-outline/20 hover:scale-110 transition-transform focus:ring-2 ring-secondary ring-offset-2 ring-offset-surface"></button>
+<button class="w-8 h-8 rounded-full bg-[#f5ece7] border border-outline/20 hover:scale-110 transition-transform"></button>
+<button class="w-8 h-8 rounded-full bg-[#272725] border border-outline/20 hover:scale-110 transition-transform"></button>
+<button class="w-8 h-8 rounded-full bg-[#e9c176] border border-outline/20 hover:scale-110 transition-transform"></button>
+<button class="w-8 h-8 rounded-full bg-[#af2b3e] border border-outline/20 hover:scale-110 transition-transform"></button>
+<button class="w-8 h-8 rounded-full bg-[#ffffff] border border-outline/20 hover:scale-110 transition-transform"></button>
+</div>
+</div>
+<!-- Occasion Filter -->
+<div class="pb-6">
+<h3 class="font-label-caps text-label-caps text-primary mb-4 flex justify-between items-center cursor-pointer">
+                            Occasion
+                            <span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</h3>
+<div class="space-y-3 font-body-md text-body-md text-on-surface-variant">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 border border-secondary rounded flex items-center justify-center bg-secondary">
+<span class="material-symbols-outlined text-[12px] text-on-secondary" data-icon="check">check</span>
+</div>
+<span class="text-primary font-semibold">Bridal</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 border border-secondary rounded flex items-center justify-center group-hover:border-primary transition-colors"></div>
+<span>Sangeet</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 border border-secondary rounded flex items-center justify-center group-hover:border-primary transition-colors"></div>
+<span>Festive</span>
+</label>
+</div>
+</div>
+</div>
+</aside>
+<!-- Product Grid -->
+<div class="flex-1">
+<!-- Active Filters & Sort -->
+<div class="flex justify-between items-center mb-8">
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 border border-secondary rounded-full font-label-caps text-label-caps text-primary flex items-center gap-1 hover:bg-surface-container-low transition-colors cursor-pointer">
+                            Bridal <span class="material-symbols-outlined text-[14px]" data-icon="close">close</span>
+</span>
+<button class="font-label-caps text-label-caps text-on-surface-variant underline hover:text-primary transition-colors">Clear All</button>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant hidden sm:inline">Sort by:</span>
+<select class="bg-transparent border-b border-secondary/50 font-label-caps text-label-caps text-primary focus:outline-none focus:border-secondary py-1 cursor-pointer">
+<option>New Arrivals</option>
+<option>Price: High to Low</option>
+<option>Price: Low to High</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-12">
+<!-- Product Card 1 -->
+<article class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A high-fashion studio shot of a luxurious deep maroon velvet bridal lehenga with intricate antique gold zardozi embroidery. The fabric looks heavy and rich, catching soft studio lighting. A minimalist light-mode aesthetic with a cream background emphasizes the rich colors and textures of the traditional Indian garment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwZ_hT_5AAMmC-q7WzmfiMoJXyu_CT4riGCakhCpPcpVI1QfHQYoVG48YrTZeXfdarZDB6uBjyjeOVv2U_0PTVrGXep92F_bf0UaAk6YUWrgCCzsNIaXO7fiqWAbIntuc2YAQc7C93Q-UXh5kp2IJ51MB_Q-zsw6E5Z_4SK-P4gaRv3G2rQAQ8ruzDmxZuqb6xooENcGWxi1L6MYatkByfx0DPvlzlTq4q1rLAVww6KCi5YtKS0oGJwSNmtQ14CzblIGuyEPpNhHbs"/>
+<div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+<button class="bg-surface/90 text-primary px-6 py-2 border border-secondary rounded font-label-caps text-label-caps hover:bg-primary hover:text-on-primary hover:border-primary transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300">Quick View</button>
+</div>
+</div>
+<div class="text-center px-4">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2 line-clamp-1 group-hover:text-secondary transition-colors">The Zoya Lehenga</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">₹1,45,000</p>
+</div>
+</article>
+<!-- Product Card 2 -->
+<article class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A stunning ivory silk lehenga featuring delicate pastel floral motifs and subtle silver sequin work. The garment is draped elegantly on an invisible mannequin against a soft, bright cream background. The lighting is diffused and natural, creating a serene, contemporary, and luxurious light-mode aesthetic highlighting the fine craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCREkVmB7pVIKhzIqkua-mbIkD1VNJsHIUjdx7as7dMa8k6pkx8ZWW-RJEydugWZmT3Q8YBRAyn1-l2cF8vs3ZU8ks1zK645WWndsjywsqb4BjOdQk_t6ehogAEAEe-2QsLRyNkBwAByXkv4Jb0rNGBGt0tBucYLlUEskAXEMW7lxj4kqvxUm2gb6jcjMXPFk_0hWblvF2pE0JJEdO8L3mJ-RCN6-F6kJIljbO11tEyM9wEFM9BAKOPikc-uDUtOHjkRnh1iWTplv-7"/>
+<div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+<button class="bg-surface/90 text-primary px-6 py-2 border border-secondary rounded font-label-caps text-label-caps hover:bg-primary hover:text-on-primary hover:border-primary transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300">Quick View</button>
+</div>
+</div>
+<div class="text-center px-4">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2 line-clamp-1 group-hover:text-secondary transition-colors">Ivory Gulab Lehenga</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">₹85,000</p>
+</div>
+</article>
+<!-- Product Card 3 -->
+<article class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A striking emerald green Banarasi silk lehenga with heavy golden brocade patterns. The rich texture of the woven silk is highlighted by warm, sophisticated lighting. The background is a minimalist, very pale warm grey, ensuring the vibrant green and gold stand out prominently in this high-end light-mode catalog shot." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAyR069rdoHkdF6qk3FIGNOhp4JI6r7lqmGJgv2hRdeBtEfyOsd_RqQWgGVFcn7UXZMr4DQn76aXwzBQRuoxaeZpBUWjHYYFqzP1q_hVda6aUS_zO-_8EIgRfznbr6mrbZUuKebCFmkQSQVgE-c-JjsZNjQVnlt4PlXCKEyzFPjMyhUyCmKwx1dlbc1JWVVx5FjJrTIt5KmXL4IEXXyboPxNym6GhKq0hKysSHUaofsXYLmuIYNla7hxomEX-uR1E5ryS9lylWUIrb"/>
+<div class="absolute top-4 right-4 bg-primary text-on-primary px-2 py-1 font-label-caps text-[10px] rounded tracking-wider">NEW</div>
+<div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+<button class="bg-surface/90 text-primary px-6 py-2 border border-secondary rounded font-label-caps text-label-caps hover:bg-primary hover:text-on-primary hover:border-primary transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300">Quick View</button>
+</div>
+</div>
+<div class="text-center px-4">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2 line-clamp-1 group-hover:text-secondary transition-colors">Emerald Banarasi Lehenga</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">₹92,500</p>
+</div>
+</article>
+<!-- Product Card 4 -->
+<article class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A soft blush pink net lehenga adorned with scattered pearl and crystal embellishments. The fabric is light and ethereal, catching the bright, diffused studio light. Photographed against a pristine white background, the image embodies a modern, minimalist, and deeply romantic light-mode aesthetic focused on delicate bridal wear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8uq7j78XkFIApmeUEnb_glshOrzxj82W8YSQpNLFDvdY8r1xTxtUvzoqjG22nOUp9yd_dFmH0O9ULHsi0csxFO15c0MLVwfa3Ll59yoWeSljrIfimTTDn5xM4YxeUBl4xd_-vld5IOmub-WBBejuf_JOcu7ENRjxufUPkVpjKZA7mAMOluRFTi1rg-ADyHI2I3Ji7W33xojkMQqDEmF3HTq4p53eId2X-RtKwfyP49zhNuJFlUnGeFNGAAXFYK5KGW2Oj3UivqZvr"/>
+<div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+<button class="bg-surface/90 text-primary px-6 py-2 border border-secondary rounded font-label-caps text-label-caps hover:bg-primary hover:text-on-primary hover:border-primary transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300">Quick View</button>
+</div>
+</div>
+<div class="text-center px-4">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2 line-clamp-1 group-hover:text-secondary transition-colors">Blush Pearl Lehenga</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">₹1,15,000</p>
+</div>
+</article>
+<!-- Product Card 5 -->
+<article class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A regal navy blue velvet lehenga showcasing geometric gold embroidery patterns inspired by Mughal architecture. The deep, rich color contrasts beautifully with the bright, warm cream background of the studio setting. The lighting is crisp, emphasizing the tactile quality of the velvet and the sheen of the metallic thread in a premium light-mode setup." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvAcTyjWSa-izBQ9NuxABJSaBp7BRbkCZwlisSnuynVWLcS5K_Op7ImtMJVXI_B0AagX3RHn0f0eeebLOJPXOD47PyHLWI_0HSgtaE1bvztQ0SVP3ohbFrObUtXeRQfexYp-X2Ba4VucEchdUdH63Gwelm5tBX3DUnSN1xwCuDnrFXXcuSu6yjtkzjqCs-2cvZ4ktoYlpfDImiUTbGoWNyhJcDCtRVR0yFNAjWppau69-827ccP7JsL0MFOpGUR6Gts24nZN8OLM0V"/>
+<div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+<button class="bg-surface/90 text-primary px-6 py-2 border border-secondary rounded font-label-caps text-label-caps hover:bg-primary hover:text-on-primary hover:border-primary transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300">Quick View</button>
+</div>
+</div>
+<div class="text-center px-4">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2 line-clamp-1 group-hover:text-secondary transition-colors">Royal Navy Velvet Lehenga</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">₹1,30,000</p>
+</div>
+</article>
+<!-- Product Card 6 -->
+<article class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A classic crimson red bridal lehenga with dense, traditional zari work. The heavy embellishments reflect light, indicating luxury and fine craftsmanship. Set against a soft, very pale warm taupe background, the image maintains a clean, modern light-mode gallery aesthetic while honoring the rich heritage of the Indian bridal attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDadySDsXvU6Br04j7SGnTrVOcZeZYVlc2rm-wwbOehONKs5EEcAtLuLrT7v0gs_tz0643KcAvbQW5Y9aKIAQfHotDmucpp2H_9VDSC75bWU4R7--WiKqKT01YRPsUc8OS3Af7HLTnv5ptzF1fLISnPLHu77HvvXsH82vZ7Vcj10CfJIin8W6iHYkiCwL5mAaWwpNgqc3EzrNP6G85UH6WcwQSSTgXSCbcXnmiormKS7__EQCuqdWbP2hinB8BwBcnqRxHGhR65KE8K"/>
+<div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+<button class="bg-surface/90 text-primary px-6 py-2 border border-secondary rounded font-label-caps text-label-caps hover:bg-primary hover:text-on-primary hover:border-primary transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300">Quick View</button>
+</div>
+</div>
+<div class="text-center px-4">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2 line-clamp-1 group-hover:text-secondary transition-colors">Classic Crimson Lehenga</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">₹1,85,000</p>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-20 flex justify-center items-center gap-4 font-label-caps text-label-caps">
+<button class="w-10 h-10 border border-outline-variant rounded flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-colors" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 border border-primary bg-primary text-on-primary rounded flex items-center justify-center">1</button>
+<button class="w-10 h-10 border border-outline-variant rounded flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-colors">2</button>
+<button class="w-10 h-10 border border-outline-variant rounded flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-colors">3</button>
+<button class="w-10 h-10 border border-outline-variant rounded flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-tertiary-container border-t border-outline-variant/20 transition-all duration-200 ease-in-out mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter py-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="md:col-span-1 mb-8 md:mb-0">
+<a class="font-display-lg text-display-lg text-primary block mb-6" href="#">Kasheeda</a>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 max-w-xs">Contemporary heritage wear, crafted with unparalleled attention to detail for the modern discerning individual.</p>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Kasheeda. Crafted Heritage.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-primary font-semibold mb-6">Explore</h4>
+<a class="block font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all" href="#">About Us</a>
+<a class="block font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all" href="#">Store Locator</a>
+<a class="block font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all" href="#">Journal</a>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-primary font-semibold mb-6">Customer Care</h4>
+<a class="block font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all" href="#">Contact Us</a>
+<a class="block font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all" href="#">Shipping &amp; Returns</a>
+<a class="block font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all" href="#">Size Guide</a>
+<a class="block font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all" href="#">Privacy Policy</a>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-primary font-semibold mb-6">Stay Connected</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Subscribe for exclusive updates and new arrivals.</p>
+<div class="relative">
+<input class="w-full bg-transparent border-b border-outline-variant/50 py-2 font-label-caps text-label-caps text-on-surface focus:outline-none focus:border-secondary transition-colors" placeholder="YOUR EMAIL" type="email"/>
+<button class="absolute right-0 top-1/2 -translate-y-1/2 text-primary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

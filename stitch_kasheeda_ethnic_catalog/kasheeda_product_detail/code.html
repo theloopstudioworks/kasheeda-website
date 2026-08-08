@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kasheeda - Hand-embroidered Silk Saree</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e0bfbf;
+            border-radius: 4px;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#a9a8a4",
+                      "surface-container-low": "#fbf2ed",
+                      "surface-container-high": "#efe6e2",
+                      "on-secondary-fixed": "#261900",
+                      "surface": "#fff8f5",
+                      "surface-container": "#f5ece7",
+                      "on-background": "#1e1b18",
+                      "surface-dim": "#e1d8d4",
+                      "inverse-on-surface": "#f8efea",
+                      "primary-container": "#800020",
+                      "surface-container-highest": "#e9e1dc",
+                      "secondary-fixed-dim": "#e9c176",
+                      "on-primary-container": "#ff828a",
+                      "surface-tint": "#af2b3e",
+                      "on-primary-fixed-variant": "#8e0f28",
+                      "outline": "#8c7071",
+                      "tertiary": "#272725",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#ffdea5",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#fff8f5",
+                      "on-surface": "#1e1b18",
+                      "on-secondary-container": "#785a1a",
+                      "on-surface-variant": "#584141",
+                      "secondary-container": "#fed488",
+                      "primary": "#570013",
+                      "surface-bright": "#fff8f5",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#ffb3b5",
+                      "outline-variant": "#e0bfbf",
+                      "secondary": "#775a19",
+                      "inverse-surface": "#34302c",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "on-error": "#ffffff",
+                      "tertiary-container": "#3d3d3b",
+                      "on-tertiary-fixed": "#1b1c1a",
+                      "tertiary-fixed-dim": "#c8c6c3",
+                      "tertiary-fixed": "#e4e2de",
+                      "on-primary-fixed": "#40000b",
+                      "surface-variant": "#e9e1dc",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#5d4201",
+                      "inverse-primary": "#ffb3b5",
+                      "primary-fixed": "#ffdada",
+                      "on-tertiary-fixed-variant": "#474744"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "base": "8px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "\"Source Sans 3\""
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "headline-sm": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "\"Source Sans 3\""
+                      ],
+                      "label-caps": [
+                              "\"Source Sans 3\""
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-surface/80 backdrop-blur-md dark:bg-surface-container/80 border-b border-outline-variant/30">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Mobile Menu Icon (Placeholder for interaction) -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Brand Logo -->
+<a class="font-display-lg text-display-lg text-primary dark:text-primary-fixed-dim tracking-tight" href="#">
+                Kasheeda
+            </a>
+<!-- Navigation Links (Desktop) -->
+<ul class="hidden md:flex items-center gap-8">
+<li><a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="#">Lehengas</a></li>
+<!-- Active Navigation Item based on intent (Sarees) -->
+<li><a class="text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-300 opacity-80 transition-opacity font-label-caps text-label-caps" href="#">Sarees</a></li>
+<li><a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="#">Kurtas</a></li>
+<li><a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="#">Collections</a></li>
+<li><a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="#">Journal</a></li>
+</ul>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-4 text-primary dark:text-primary-fixed-dim">
+<button class="hover:opacity-70 transition-opacity"><span class="material-symbols-outlined">search</span></button>
+<button class="hover:opacity-70 transition-opacity"><span class="material-symbols-outlined">shopping_bag</span></button>
+<button class="hidden md:block hover:opacity-70 transition-opacity"><span class="material-symbols-outlined">person</span></button>
+</div>
+</div>
+</nav>
+<!-- Main Product Canvas -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-16">
+<!-- Left Column: Image Gallery (Asymmetric Layout) -->
+<section class="lg:col-span-7 flex flex-col gap-base">
+<!-- Main Hero Image -->
+<div class="w-full relative aspect-[3/4] bg-surface-container-low group overflow-hidden">
+<img alt="Hand-embroidered Silk Saree Main View" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="A stunning, high-resolution fashion editorial photograph of a hand-embroidered silk saree in a soft ivory and deep maroon palette. The fabric features intricate, delicate gold zari work catching a soft, diffused studio light. The composition is minimalist, focusing on the texture and drape of the silk against a clean, warm cream background. The aesthetic is luxurious, contemporary heritage, emphasizing traditional Indian craftsmanship in a modern, high-end boutique setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Y1sjJKkXM11YjoqbWlw5Zm4ctHpvE810gbWWb-_XlAg5bWfvaBfUlckGxiqqXJTaZIwvbTvT6gxlFbBxDPm36YC2zG4CJ3JJTcuqkV-2w2mZd2uqJHlcA5jodYDzbLicYq0JYgnDlDwzViAgWw3qwmCwApjFvWPsaSNTxQC_m7433jGPptaXzvpbs5ihRAHobpx5SZDIHpN84ONPuhm_1ApNqrJ5lqC6mD7YS-nICMzxrFcyPBKN68G3y4YvKJPwoKaFp9rucBTf"/>
+</div>
+<!-- Thumbnails Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-base mt-2">
+<div class="aspect-[3/4] bg-surface-container-low cursor-pointer border border-outline-variant/50 relative overflow-hidden">
+<img alt="Embroidery Detail" class="absolute inset-0 w-full h-full object-cover" data-alt="Extreme close-up macro photography of exquisite hand-embroidery on raw silk fabric. The image highlights the fine, tactile details of the gold metallic threads forming floral motifs against a rich, deep maroon base. The lighting is soft and directional, creating a sense of depth and emphasizing the luxurious texture of the materials. Minimalist composition, focusing purely on the artistry and heritage craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSANeELjuU1rBXKpNAwgfZ4bkzQUGY6SMkZLaZlp-S2jbGZ34euII7kSApTjOsjlLUC0LzUBDvWWGls0pDtpQYhjSc3NoFVbDWk44DfgTFcI81ZBXJ61FUQ_R33v8bD52cq6guthY5lCjBW39sbxJniTOgepii55PPZoW9pY5u3KYt-B5uQwL1gP3dPorxXFB6dbby8NOJewif91glU--72IBHD6XutS8SNpWRzX8ntzS2mk74VFV2iF8jI1l0371RxcLUb7PwMMCB"/>
+</div>
+<div class="aspect-[3/4] bg-surface-container-low cursor-pointer opacity-70 hover:opacity-100 transition-opacity relative overflow-hidden">
+<img alt="Saree Drape View" class="absolute inset-0 w-full h-full object-cover" data-alt="An elegant, cinematic shot focusing on the graceful drape and fall of a luxurious silk saree. The fabric, in a subtle cream tone with delicate gold borders, cascades smoothly, showcasing its heavy, premium quality. The lighting is bright and ethereal, casting soft shadows that highlight the garment's fluid form. Set against a minimalist, warm off-white studio background to emphasize the sophisticated, contemporary heritage style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-4KD0gTg3gT7pEuunc10lyZi42f9oVqsgci-0X1_oPlZ-1J_cV9KJ1OuDkxkBkcAlPHpYqAG7aitHzYETK4cg1YTqQKylHNkgb7PQwbJftrSL6HtHmKGNGrWChtPjwnubbiHOnDwNIgGHRhk-HZc2eY8J_i8Sd6aelekVnAS3Jt744OYI1gqlYm8dUZesTooIyV3qyOFAMG6X22630Niky0H4nSLXmuZp18UmziihznXYBZSrU91N_-LeGGxmFXxapCgTfCLEk4iM"/>
+</div>
+<div class="aspect-[3/4] bg-surface-container-low cursor-pointer opacity-70 hover:opacity-100 transition-opacity relative overflow-hidden">
+<img alt="Saree Full View" class="absolute inset-0 w-full h-full object-cover" data-alt="A full-length fashion portrait of a model wearing a luxurious hand-embroidered silk saree. The setting is a minimalist, modern architectural space with warm, natural sunlight casting structural shadows. The color palette focuses on deep maroon, ivory, and touches of antique gold. The overall mood is confident, sophisticated, and quietly opulent, perfectly capturing a contemporary heritage aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbAcQ_-PZXv3UURI1d4DA2aCGLDcZD6a82t8LRHjb6f08Lm9wcIkJucZXIN2Kr8aMLsDdISImgwe_mpqoVAwpP9ysM2V9kiiBU0imPopLHew2Wn1sUCNklTHEYN7-mPzDIJ-joSYfOmDHnhtKKQq1cabywxbqxyHNPHzIMeqgnDvmkeY3i9CiBlyaiZrzLyuItkBLk8RTRr6LI6F89271c0TUCSI5sWNldHxp2IlTr5LyzT_Dk3-PfUw7ZpJ1v9EawhTYQ57_0dlG_"/>
+</div>
+<div class="aspect-[3/4] bg-surface-container-low cursor-pointer opacity-70 hover:opacity-100 transition-opacity flex items-center justify-center bg-surface-container">
+<span class="font-label-caps text-label-caps text-on-surface-variant flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-[24px]">play_circle</span>
+                            View Video
+                        </span>
+</div>
+</div>
+</section>
+<!-- Right Column: Product Information (Sticky) -->
+<section class="lg:col-span-5 flex flex-col gap-10 lg:sticky lg:top-32 h-fit pt-8 lg:pt-0">
+<!-- Breadcrumb & Header -->
+<div class="flex flex-col gap-4">
+<nav class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2">
+<a class="hover:text-primary transition-colors" href="#">Sarees</a>
+<span>/</span>
+<a class="hover:text-primary transition-colors" href="#">Heritage Collection</a>
+</nav>
+<h1 class="font-headline-md text-headline-md text-on-background">Varanasi Hand-Woven Silk Saree</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">INR 1,45,000</p>
+</div>
+<!-- Description -->
+<div class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p>A masterpiece of tactile luxury. This saree is hand-woven by master artisans over 120 days, featuring intricate Kadwa weaving technique. The deep, lustrous raw silk serves as a canvas for delicate, antique gold zari work that catches the light with quiet sophistication.</p>
+</div>
+<!-- Color Selection (Minimalist Chips) -->
+<div class="flex flex-col gap-4 border-t border-outline-variant/30 pt-6">
+<span class="font-label-caps text-label-caps text-on-background">Color: Deep Maroon</span>
+<div class="flex gap-4">
+<button aria-label="Deep Maroon" class="w-10 h-10 rounded-full bg-primary ring-1 ring-outline ring-offset-2 ring-offset-surface"></button>
+<button aria-label="Ivory Cream" class="w-10 h-10 rounded-full bg-[#f4e7d3] ring-1 ring-transparent hover:ring-outline/50 transition-all"></button>
+</div>
+</div>
+<!-- Primary CTAs -->
+<div class="flex flex-col gap-4 pt-4">
+<!-- WhatsApp CTA (Specialized green as per style guide, matched styling) -->
+<button class="w-full py-4 px-6 flex items-center justify-center gap-3 bg-[#25D366] text-white hover:opacity-90 transition-opacity font-label-caps text-label-caps tracking-widest rounded shadow-sm">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path>
+</svg>
+                        ORDER VIA WHATSAPP
+                    </button>
+<!-- Secondary CTA -->
+<button class="w-full py-4 px-6 border border-outline text-primary hover:bg-surface-container-low transition-colors font-label-caps text-label-caps tracking-widest rounded flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+                        SAVE TO WISHLIST
+                    </button>
+</div>
+<!-- Additional Info Accordions (Minimalist style) -->
+<div class="flex flex-col mt-6">
+<div class="border-t border-outline-variant/30 py-4 cursor-pointer flex justify-between items-center group">
+<span class="font-label-caps text-label-caps text-on-background group-hover:text-primary transition-colors">Details &amp; Care</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">add</span>
+</div>
+<div class="border-t border-outline-variant/30 py-4 cursor-pointer flex justify-between items-center group">
+<span class="font-label-caps text-label-caps text-on-background group-hover:text-primary transition-colors">Size &amp; Fit Guide</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">add</span>
+</div>
+<div class="border-t border-b border-outline-variant/30 py-4 cursor-pointer flex justify-between items-center group">
+<span class="font-label-caps text-label-caps text-on-background group-hover:text-primary transition-colors">Shipping &amp; Returns</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">add</span>
+</div>
+</div>
+<!-- Trust/Heritage Badges -->
+<div class="flex items-center gap-6 mt-4 pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 opacity-70">
+<span class="material-symbols-outlined text-outline font-light">handshake</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">100% Authentic Handloom</span>
+</div>
+<div class="flex items-center gap-2 opacity-70">
+<span class="material-symbols-outlined text-outline font-light">globe</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">Worldwide Shipping</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-tertiary-container border-t border-outline-variant/20 mt-24">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter py-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto Transition-all duration-200 ease-in-out">
+<!-- Brand Column -->
+<div class="col-span-1 md:col-span-2 flex flex-col gap-6">
+<a class="font-display-lg text-display-lg text-primary" href="#">
+                    Kasheeda
+                </a>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+                    Crafting contemporary heritage through timeless hand-woven textiles and minimalist elegance.
+                </p>
+</div>
+<!-- Links Column -->
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-label-caps text-label-caps text-primary font-semibold">Explore</h4>
+<ul class="flex flex-col gap-3">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-primary/30 transition-all duration-200" href="#">About Us</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-primary/30 transition-all duration-200" href="#">Journal</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-primary/30 transition-all duration-200" href="#">Store Locator</a></li>
+</ul>
+</div>
+<!-- Support Column -->
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-label-caps text-label-caps text-primary font-semibold">Support</h4>
+<ul class="flex flex-col gap-3">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-primary/30 transition-all duration-200" href="#">Shipping &amp; Returns</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-primary/30 transition-all duration-200" href="#">Privacy Policy</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline decoration-primary/30 transition-all duration-200" href="#">Contact Us</a></li>
+</ul>
+</div>
+<!-- Copyright Banner -->
+<div class="col-span-1 md:col-span-4 border-t border-outline-variant/20 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">
+                    © 2024 Kasheeda. Crafted Heritage.
+                </p>
+<div class="flex gap-4">
+<!-- Social placeholders -->
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
