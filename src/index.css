@@ -4,13 +4,18 @@
 
 @layer base {
   body {
-    background-color: #fff8f5;
-    color: #1e1b18;
+    background-color: #fdf6f6;
+    color: #1a0a0a;
     font-family: 'Source Sans 3', sans-serif;
   }
 
   h1, h2, h3, h4, .font-serif-brand {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* Le Jour Script simulation with Great Vibes — elegant script font */
+  .font-script, .kasheeda-script {
+    font-family: 'Great Vibes', cursive;
   }
 }
 
@@ -19,29 +24,157 @@
   vertical-align: middle;
 }
 
-/* Custom Scrollbar for Luxury Aesthetic */
+/* Custom Scrollbar — Kasheeda Crimson Aesthetic */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #fff8f5;
+  background: #fdf6f6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #e0bfbf;
+  background: linear-gradient(to bottom, #C41230, #8B0000);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8c7071;
+  background: #8B0000;
 }
 
 /* Smooth reveal animation */
 .reveal-up {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-
 .reveal-up.active {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ─── Kasheeda Card Combine Section ─────────────────────────────────────── */
+
+.combine-section {
+  position: relative;
+  min-height: 120vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  background: linear-gradient(160deg, #fdf6f6 0%, #faeaea 40%, #fdf0f0 100%);
+}
+
+/* Card base styles */
+.kcard {
+  position: absolute;
+  border-radius: 18px;
+  overflow: hidden;
+  will-change: transform, opacity;
+  transition: transform 0.05s linear, opacity 0.05s linear, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.kcard-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle sheen overlay */
+.kcard-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Card variants */
+.kcard-1 .kcard-inner {
+  background: linear-gradient(145deg, #8B0000 0%, #C41230 50%, #a01020 100%);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 20px 60px rgba(139, 0, 0, 0.45), 0 2px 8px rgba(0,0,0,0.2);
+}
+.kcard-2 .kcard-inner {
+  background: linear-gradient(145deg, #fdf6f6 0%, #fff 60%, #faeaea 100%);
+  border: 1.5px solid rgba(139, 0, 0, 0.15);
+  box-shadow: 0 20px 60px rgba(139, 0, 0, 0.18), 0 2px 8px rgba(0,0,0,0.08);
+}
+.kcard-3 .kcard-inner {
+  background: linear-gradient(145deg, #1a0a0a 0%, #2d1010 60%, #1f0808 100%);
+  border: 1px solid rgba(196, 18, 48, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.kcard-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  opacity: 0.12;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  user-select: none;
+}
+
+/* ─── Kasheeda brand name (script) displayed in combine state ─── */
+.combine-brand-reveal {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3rem, 8vw, 7rem);
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 1px 4px rgba(0,0,0,0.2);
+  line-height: 1;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.combine-sub-text {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  transition: opacity 0.6s ease;
+}
+
+/* Shimmer text effect */
+.shimmer-text {
+  background: linear-gradient(90deg, #C41230 0%, #ffd0d5 40%, #C41230 60%, #8B0000 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Floating animation for cards when scattered */
+@keyframes float-1 {
+  0%, 100% { transform: translateY(0) rotate(var(--rot)); }
+  50% { transform: translateY(-10px) rotate(var(--rot)); }
+}
+@keyframes float-2 {
+  0%, 100% { transform: translateY(0) rotate(var(--rot)); }
+  50% { transform: translateY(-14px) rotate(var(--rot)); }
+}
+@keyframes float-3 {
+  0%, 100% { transform: translateY(0) rotate(var(--rot)); }
+  50% { transform: translateY(-7px) rotate(var(--rot)); }
+}
+
+.floating-1 { animation: float-1 4s ease-in-out infinite; }
+.floating-2 { animation: float-2 5s ease-in-out infinite; }
+.floating-3 { animation: float-3 3.5s ease-in-out infinite; }

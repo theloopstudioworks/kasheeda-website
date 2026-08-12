@@ -88,7 +88,8 @@ export const Header = () => {
         <div className="text-center absolute left-1/2 transform -translate-x-1/2 md:static md:translate-x-0">
           <button
             onClick={() => navigateTo('home')}
-            className="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight block hover:opacity-90 transition-opacity"
+            className="kasheeda-script text-primary block hover:opacity-90 transition-opacity leading-none"
+            style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
           >
             Kasheeda
           </button>

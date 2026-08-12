@@ -21,7 +21,8 @@ export const Footer = () => {
         <div className="md:col-span-1 mb-8 md:mb-0">
           <button
             onClick={() => navigateTo('home')}
-            className="font-display-lg text-display-lg text-primary block mb-4 text-left hover:opacity-90 transition-opacity"
+            className="kasheeda-script text-primary block mb-4 text-left hover:opacity-90 transition-opacity leading-none"
+            style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)' }}
           >
             Kasheeda
           </button>
