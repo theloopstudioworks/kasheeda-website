@@ -1,13 +1,13 @@
 import React from 'react';
 import { useShop } from '../context/ShopContext';
 
-export const JournalPage = () => {
+export const BlogPage = () => {
   const { navigateTo } = useShop();
 
   const articles = [
     {
       id: 1,
-      title: 'The Kadwa Weaving Tradition of Varanasi',
+      title: 'The Kadwa Weaving Tradition of Banarasi',
       subtitle: 'Inside the 120-day artisanal process behind hand-loomed gold zari sarees.',
       date: 'OCTOBER 24, 2024',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSANeELjuU1rBXKpNAwgfZ4bkzQUGY6SMkZLaZlp-S2jbGZ34euII7kSApTjOsjlLUC0LzUBDvWWGls0pDtpQYhjSc3NoFVbDWk44DfgTFcI81ZBXJ61FUQ_R33v8bD52cq6guthY5lCjBW39sbxJniTOgepii55PPZoW9pY5u3KYt-B5uQwL1gP3dPorxXFB6dbby8NOJewif91glU--72IBHD6XutS8SNpWRzX8ntzS2mk74VFV2iF8jI1l0371RxcLUb7PwMMCB',
@@ -32,10 +32,10 @@ export const JournalPage = () => {
     <main className="max-w-container-max mx-auto px-margin-mobile py-12 md:py-20 flex-grow">
       <header className="mb-16 text-center max-w-2xl mx-auto">
         <span className="font-label-caps text-label-caps text-secondary tracking-widest uppercase block mb-2">
-          Editorial Journal
+          Editorial Blogs
         </span>
         <h1 className="font-display-lg text-display-lg text-primary mb-4">
-          The Kasheeda Journal
+          The Kasheeda Blogs
         </h1>
         <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
           Stories of heritage textiles, master weavers, and the evolving language of contemporary Indian luxury.

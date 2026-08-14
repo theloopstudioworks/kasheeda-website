@@ -29,7 +29,7 @@ export const ProductAccordions = ({ details }) => {
                 details.map((item, idx) => <li key={idx}>{item}</li>)
               ) : (
                 <>
-                  <li>Handwoven in Varanasi by master artisans</li>
+                  <li>Handwoven in Banarasi by master artisans</li>
                   <li>100% Pure Mulberry Silk</li>
                   <li>Antique Gold metallic Zari embroidery</li>
                   <li>Dry clean only to maintain sheen and threadwork integrity</li>

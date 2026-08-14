@@ -4,6 +4,7 @@ import { ProductGallery } from '../components/product/ProductGallery';
 import { ProductAccordions } from '../components/product/ProductAccordions';
 import { ProductCard } from '../components/common/ProductCard';
 import { PRODUCTS } from '../data/products';
+import { whatsappLink } from '../data/contact';
 
 export const ProductDetailPage = () => {
   const {
@@ -31,7 +32,7 @@ export const ProductDetailPage = () => {
     }*%0A• Color: ${selectedColor || product.color}%0A• Price: ${
       product.priceFormatted
     }%0A%0APlease assist me with custom sizing and order confirmation.`;
-    window.open(`https://wa.me/?text=${message}`, '_blank');
+    window.open(whatsappLink(message), '_blank', 'noopener,noreferrer');
   };
 
   // Prefer pieces in the same fabric, then the same category, then anything.

@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { useShop } from '../../context/ShopContext';
 import { Wordmark } from './Wordmark';
 import { INFO_PAGES, INFO_PAGE_KEYS } from '../../data/infoPages';
+import {
+  BOUTIQUE_ADDRESS,
+  SOCIAL_LINKS,
+  WHATSAPP_NUMBER_DISPLAY,
+  whatsappLink,
+} from '../../data/contact';
 
 export const Footer = () => {
   const { navigateTo, openInfoPage } = useShop();
@@ -31,6 +37,47 @@ export const Footer = () => {
           <p className="font-body-md text-body-md text-on-surface-variant max-w-xs leading-relaxed mb-4">
             Crafting contemporary heritage through timeless hand-woven textiles and minimalist elegance.
           </p>
+
+          <address className="not-italic font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">
+            <a
+              href={BOUTIQUE_ADDRESS.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors block"
+            >
+              {BOUTIQUE_ADDRESS.line1}
+              <br />
+              {BOUTIQUE_ADDRESS.line2}
+            </a>
+            <a
+              href={whatsappLink('')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors block mt-2"
+            >
+              {WHATSAPP_NUMBER_DISPLAY}
+            </a>
+          </address>
+
+          <div className="flex items-center gap-3 mb-4">
+            {SOCIAL_LINKS.map((social) => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Kasheeda on ${social.name}`}
+                className="text-primary hover:text-secondary transition-colors"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="w-5 h-5">
+                  <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+                  <circle cx="12" cy="12" r="4.2" />
+                  <circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+            ))}
+          </div>
+
           <p className="font-body-md text-body-md text-on-surface-variant text-sm">
             © 2024 Kasheeda. Crafted Heritage.
           </p>
@@ -42,28 +89,28 @@ export const Footer = () => {
             Explore
           </h4>
           <button
-            onClick={() => navigateTo('catalog', 'Lehengas')}
-            className="text-left font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
-          >
-            Lehengas Collection
-          </button>
-          <button
             onClick={() => navigateTo('catalog', 'Sarees')}
             className="text-left font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
           >
-            Varanasi Sarees
+            Banarasi Sarees
           </button>
           <button
-            onClick={() => navigateTo('catalog', 'Kurtas')}
+            onClick={() => navigateTo('catalog', 'Suits')}
             className="text-left font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
           >
-            Handspun Kurtas
+            Unstitched Suit Sets
           </button>
           <button
-            onClick={() => navigateTo('journal')}
+            onClick={() => navigateTo('catalog', 'All')}
             className="text-left font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
           >
-            The Heritage Journal
+            All Collections
+          </button>
+          <button
+            onClick={() => navigateTo('blog')}
+            className="text-left font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
+          >
+            Blogs
           </button>
         </div>
 

@@ -10,7 +10,7 @@ export const ShopProvider = ({ children }) => {
   const [infoPageKey, setInfoPageKey] = useState('shipping');
   const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[0]); // default to first product
   const [cart, setCart] = useState([]);
-  const [wishlist, setWishlist] = useState(['varanasi-silk-saree']);
+  const [wishlist, setWishlist] = useState(['banarasi-silk-saree']);
   
   // UI states
   const [isCartOpen, setIsCartOpen] = useState(false);

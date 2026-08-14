@@ -79,6 +79,8 @@ export default {
         "label-caps": ["'Source Sans 3'", "sans-serif"]
       },
       fontSize: {
+        // Header action icons (search / wishlist / bag / hamburger)
+        icon: ["1.5rem", { lineHeight: "1" }],
         "display-lg-mobile": ["42px", { lineHeight: "1.15", fontWeight: "600" }],
         "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
         "display-lg": ["60px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],

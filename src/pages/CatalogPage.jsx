@@ -76,8 +76,6 @@ export const CatalogPage = () => {
     All: 'The Royal Collection',
     Sarees: 'Heritage Sarees',
     Suits: 'Unstitched Suit Sets',
-    Lehengas: 'Lehengas',
-    Kurtas: 'Handspun Kurtas',
   };
 
   const categoryDescriptions = {
@@ -86,10 +84,6 @@ export const CatalogPage = () => {
       'Handwoven Banarasi, Chanderi, Maheshwari, Kota and Ajrakh sarees — from everyday cottons to occasion silks, sourced directly from weaving clusters.',
     Suits:
       'Unstitched three-piece Maheshwari cotton silk sets with hand block-printed dupattas, ready for your tailor.',
-    Lehengas:
-      'Discover our curated collection of handcrafted Lehengas, where heritage craftsmanship meets contemporary elegance.',
-    Kurtas:
-      'Tailored luxury kurtas in handspun organic linen and raw silk, designed for clean modern silhouettes.',
   };
 
   const resetPageAnd = (fn) => (value) => {

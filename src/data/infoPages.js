@@ -22,7 +22,7 @@ export const INFO_PAGES = {
     eyebrow: 'Customer Care',
     title: 'Shipping & Returns',
     intro:
-      'Every Kasheeda piece is checked by hand, wrapped in cotton muslin and dispatched from our studio in [CITY]. Here is exactly what to expect once your order is confirmed.',
+      'Every Kasheeda piece is checked by hand, wrapped in cotton muslin and dispatched from our boutique in Dehradun. Here is exactly what to expect once your order is confirmed.',
     sections: [
       {
         heading: 'Dispatch Timelines',
@@ -96,7 +96,7 @@ export const INFO_PAGES = {
           'Shoulder — from the tip of one shoulder bone across the back to the other.',
           'Sleeve length — from the shoulder tip down to where you want the sleeve to end.',
           'Blouse length — from the shoulder tip to the desired hem at the front.',
-          'Lehenga length — from the natural waist to the floor, measured while wearing your intended heel height.',
+          'Kurta / bottom length — from the shoulder tip or natural waist down to the desired hem, measured while wearing your intended heel height.',
         ],
       },
       {
@@ -159,7 +159,8 @@ export const INFO_PAGES = {
       {
         heading: 'Reach Us',
         bullets: [
-          'WhatsApp — [+91 XXXXX XXXXX] (fastest for order and sizing questions)',
+          'WhatsApp — +91 82720 37228 (fastest for order and sizing questions)',
+          'Instagram — @kasheeda.the.boutique',
           'Email — [hello@kasheeda.com]',
           'Orders & after-sales — [orders@kasheeda.com]',
         ],
@@ -168,8 +169,9 @@ export const INFO_PAGES = {
         heading: 'Visit the Boutique',
         body: 'Appointments are recommended so we can set aside time and pull pieces for you.',
         bullets: [
-          '[Boutique address line 1]',
-          '[Boutique address line 2, City, PIN]',
+          'Kasheeda — The Boutique',
+          'Phase 2, 234, Vasant Vihar',
+          'Dehradun, Uttarakhand 248006',
           'Monday to Saturday, [11:00 AM – 7:00 PM]',
           'Sunday — by appointment only',
         ],
@@ -256,7 +258,7 @@ export const INFO_PAGES = {
       },
       {
         heading: 'Contact',
-        body: 'Questions about this policy can be sent to [privacy@kasheeda.com] or to [Kasheeda, boutique address].',
+        body: 'Questions about this policy can be sent to [privacy@kasheeda.com] or to Kasheeda — The Boutique, Phase 2, 234, Vasant Vihar, Dehradun, Uttarakhand 248006.',
       },
     ],
     disclaimer:
