@@ -63,7 +63,9 @@ export const Header = () => {
         </div>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-8 font-label-caps text-label-caps">
+        {/* text-label-caps is 12px — too small for the desktop bar, so the size,
+            tracking and weight are set explicitly here instead. */}
+        <nav className="hidden md:flex items-center space-x-8 font-label-caps text-[15px] tracking-[0.1em] font-semibold">
           {navLinks.map((item) => {
             const isActive =
               item.page

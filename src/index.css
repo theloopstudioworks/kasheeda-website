@@ -22,6 +22,20 @@
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   vertical-align: middle;
+  /* Every glyph is exactly 1em wide, so reserving that box keeps the header
+     from reflowing when the icon font finishes loading — and clips the
+     ligature text if the font never arrives at all. */
+  display: inline-block;
+  width: 1em;
+  line-height: 1;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Set on <html> until the icon font reports ready (see the script in
+   index.html), so no fragment of the ligature name is ever painted. */
+.icons-loading .material-symbols-outlined {
+  visibility: hidden;
 }
 
 /* Custom Scrollbar — Kasheeda Crimson Aesthetic */
@@ -97,6 +111,27 @@
   overflow: hidden;
 }
 
+/* The two card faces (scattered pillar / combined brand name) are stacked on
+   top of each other and cross-fade. In normal flow the hidden face still took
+   up space and pushed the visible one off centre — which clipped the wordmark
+   against the top edge on small cards. */
+.kcard-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .kcard-face {
+    padding: 1.5rem 1.1rem;
+  }
+}
+
 /* Subtle sheen overlay */
 .kcard-inner::before {
   content: '';
@@ -135,6 +170,19 @@
   top: 1rem;
   right: 1.5rem;
   user-select: none;
+}
+
+/* Phone-sized cards carry phone-sized padding — 2.5rem/2rem inside a 230px
+   card leaves almost nothing for the text. */
+@media (max-width: 767px) {
+  .kcard-inner {
+    padding: 1.5rem 1.1rem;
+  }
+  .kcard-number {
+    font-size: 54px;
+    top: 0.6rem;
+    right: 0.9rem;
+  }
 }
 
 /* ─── Kasheeda brand name (script) displayed in combine state ─── */

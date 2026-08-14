@@ -10,8 +10,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <!-- Material Symbols Outlined -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <!-- Material Symbols Outlined.
+         display=block, NOT swap: these are ligature icons, so a fallback font
+         renders the ligature name ("menu", "shopping_bag") as literal words in
+         the header. block keeps them invisible until the icon font arrives. -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet" />
+    <script>
+      // Belt and braces for the icon font: display=block alone still lets some
+      // browsers paint the ligature names ("menu", "search") for a frame or
+      // two. Hide the icons outright until the font is ready, with a timeout
+      // so they can never stay hidden if the font fails to arrive.
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('icons-loading');
+        var reveal = function () { root.classList.remove('icons-loading'); };
+        if (document.fonts && document.fonts.load) {
+          document.fonts.load('24px "Material Symbols Outlined"').then(reveal, reveal);
+          setTimeout(reveal, 3000);
+        } else {
+          reveal();
+        }
+      })();
+    </script>
   </head>
   <body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
     <div id="root"></div>

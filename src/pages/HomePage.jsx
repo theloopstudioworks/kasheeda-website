@@ -198,7 +198,9 @@ export const HomePage = () => {
 
       {/* Featured Products Grid */}
       <section className="py-24 px-margin-mobile max-w-container-max mx-auto">
-        <div className="flex justify-between items-end mb-12">
+        {/* Stacks on phones — side by side the heading and the link squeeze
+            each other and the arrow wraps onto its own line. */}
+        <div className="flex flex-col items-start gap-3 sm:flex-row sm:justify-between sm:items-end mb-12">
           <div>
             <span className="font-label-caps text-label-caps text-secondary tracking-widest uppercase block mb-1">
               Curated Selection
@@ -209,7 +211,7 @@ export const HomePage = () => {
           </div>
           <button
             onClick={() => navigateTo('catalog', 'All')}
-            className="font-label-caps text-label-caps text-primary underline hover:text-secondary transition-colors"
+            className="font-label-caps text-label-caps text-primary underline hover:text-secondary transition-colors whitespace-nowrap shrink-0"
           >
             View All Catalog →
           </button>
