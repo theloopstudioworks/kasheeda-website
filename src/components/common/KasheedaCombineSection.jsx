@@ -115,10 +115,7 @@ export const KasheedaCombineSection = () => {
         className="sticky top-0 w-full flex items-center justify-center overflow-hidden"
         style={{ height: '100vh' }}
       >
-        {/* ── Section header ──
-            Overlaid rather than stacked above the stage: it fades out on
-            scroll, and in normal flow its empty box would still reserve
-            several hundred pixels of blank space above the cards. */}
+        {/* ── Section header ── */}
         <div
           className="absolute top-0 left-0 right-0 text-center px-4 pt-28 z-20"
           style={{
