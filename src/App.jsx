@@ -4,12 +4,14 @@ import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
 import { QuickViewModal } from './components/common/QuickViewModal';
 import { CartDrawer } from './components/common/CartDrawer';
+import { WishlistDrawer } from './components/common/WishlistDrawer';
 import { SearchModal } from './components/common/SearchModal';
 import { MobileMenu } from './components/common/MobileMenu';
 import { HomePage } from './pages/HomePage';
 import { CatalogPage } from './pages/CatalogPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { JournalPage } from './pages/JournalPage';
+import { InfoPage } from './pages/InfoPage';
 
 const MainContent = () => {
   const { activePage } = useShop();
@@ -22,12 +24,14 @@ const MainContent = () => {
         {activePage === 'catalog' && <CatalogPage />}
         {activePage === 'detail' && <ProductDetailPage />}
         {activePage === 'journal' && <JournalPage />}
+        {activePage === 'info' && <InfoPage />}
       </div>
       <Footer />
 
       {/* Global Modals & Drawers */}
       <QuickViewModal />
       <CartDrawer />
+      <WishlistDrawer />
       <SearchModal />
       <MobileMenu />
     </div>

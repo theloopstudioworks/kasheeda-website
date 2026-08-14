@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useShop } from '../../context/ShopContext';
 import { PRODUCTS } from '../../data/products';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 export const SearchModal = () => {
   const { isSearchOpen, setIsSearchOpen, navigateTo } = useShop();
   const [query, setQuery] = useState('');
+
+  useBodyScrollLock(isSearchOpen);
 
   if (!isSearchOpen) return null;
 

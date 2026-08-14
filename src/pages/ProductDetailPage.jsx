@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useShop } from '../context/ShopContext';
 import { ProductGallery } from '../components/product/ProductGallery';
 import { ProductAccordions } from '../components/product/ProductAccordions';
@@ -17,6 +17,12 @@ export const ProductDetailPage = () => {
   const product = selectedProduct || PRODUCTS[0];
   const [selectedColor, setSelectedColor] = useState(product.color);
 
+  // This page stays mounted when navigating product -> product, so state that
+  // was seeded from the old product has to be re-synced.
+  useEffect(() => {
+    setSelectedColor(product.color);
+  }, [product]);
+
   const isLiked = isInWishlist(product.id);
 
   const handleWhatsAppOrder = () => {
@@ -28,10 +34,15 @@ export const ProductDetailPage = () => {
     window.open(`https://wa.me/?text=${message}`, '_blank');
   };
 
-  const relatedProducts = PRODUCTS.filter((p) => p.id !== product.id).slice(0, 3);
+  // Prefer pieces in the same fabric, then the same category, then anything.
+  const relatedProducts = [
+    ...PRODUCTS.filter((p) => p.id !== product.id && p.fabric === product.fabric),
+    ...PRODUCTS.filter((p) => p.id !== product.id && p.fabric !== product.fabric && p.category === product.category),
+    ...PRODUCTS.filter((p) => p.id !== product.id && p.category !== product.category),
+  ].slice(0, 3);
 
   return (
-    <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20">
+    <main className="max-w-container-max mx-auto px-margin-mobile py-12 md:py-20">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-16">
         {/* Left Column: Image Gallery */}
         <ProductGallery images={product.images} title={product.title} />
@@ -55,6 +66,14 @@ export const ProductDetailPage = () => {
             <h1 className="font-headline-md text-headline-md text-on-background">
               {product.title}
             </h1>
+            {product.fabric && (
+              <button
+                onClick={() => navigateTo('catalog', product.category, null, product.fabric)}
+                className="font-label-caps text-label-caps text-secondary uppercase tracking-widest self-start hover:text-primary transition-colors"
+              >
+                {product.fabric}
+              </button>
+            )}
             <p className="font-body-lg text-xl text-primary font-bold">
               {product.priceFormatted}
             </p>

@@ -29,7 +29,7 @@ export const JournalPage = () => {
   ];
 
   return (
-    <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20 flex-grow">
+    <main className="max-w-container-max mx-auto px-margin-mobile py-12 md:py-20 flex-grow">
       <header className="mb-16 text-center max-w-2xl mx-auto">
         <span className="font-label-caps text-label-caps text-secondary tracking-widest uppercase block mb-2">
           Editorial Journal
@@ -48,12 +48,18 @@ export const JournalPage = () => {
             key={art.id}
             className="group cursor-pointer flex flex-col justify-between bg-surface-container-low border border-outline-variant/30 rounded overflow-hidden shadow-xs hover:shadow-md transition-shadow"
           >
-            <div className="aspect-[16/10] overflow-hidden">
+            <div className="aspect-[16/10] overflow-hidden relative">
               <img
                 src={art.image}
                 alt={art.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
+              {/* These articles aren't written yet — say so on hover. */}
+              <div className="absolute inset-0 flex items-center justify-center bg-primary/70 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="font-label-caps text-label-caps text-white uppercase tracking-[0.3em] translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  Coming Soon.
+                </span>
+              </div>
             </div>
             <div className="p-6 flex flex-col justify-between flex-grow">
               <div>

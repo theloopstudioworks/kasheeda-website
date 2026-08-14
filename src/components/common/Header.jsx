@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useShop } from '../../context/ShopContext';
+import { Wordmark } from './Wordmark';
 
 export const Header = () => {
   const {
@@ -9,6 +10,7 @@ export const Header = () => {
     cartCount,
     wishlist,
     setIsCartOpen,
+    setIsWishlistOpen,
     setIsMobileMenuOpen,
     setIsSearchOpen,
   } = useShop();
@@ -27,11 +29,15 @@ export const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // `hidden` keeps a link out of the desktop bar without deleting it — flip the
+  // flag to bring a category back. The mobile menu still lists all of them.
+  // `pushRight` gets margin-left:auto, separating it from anything before it.
   const navLinks = [
-    { label: 'Lehengas', category: 'Lehengas' },
-    { label: 'Sarees', category: 'Sarees' },
-    { label: 'Kurtas', category: 'Kurtas' },
-    { label: 'Collections', category: 'All' },
+    { label: 'Sarees', category: 'Sarees', hidden: true },
+    { label: 'Suits', category: 'Suits', hidden: true },
+    { label: 'Lehengas', category: 'Lehengas', hidden: true },
+    { label: 'Kurtas', category: 'Kurtas', hidden: true },
+    { label: 'Collections', category: 'All', pushRight: true },
     { label: 'Journal', page: 'journal' },
   ];
 
@@ -42,7 +48,7 @@ export const Header = () => {
         isScrolled ? 'py-2 shadow-sm' : 'py-4'
       }`}
     >
-      <div className="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <div className="flex justify-between items-center h-16 px-margin-mobile max-w-container-max mx-auto">
         {/* Mobile Menu Trigger */}
         <div className="flex items-center md:hidden">
           <button
@@ -57,6 +63,8 @@ export const Header = () => {
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center space-x-8 font-label-caps text-label-caps">
           {navLinks.map((item) => {
+            if (item.hidden) return null;
+
             const isActive =
               item.page
                 ? activePage === item.page
@@ -73,6 +81,8 @@ export const Header = () => {
                   }
                 }}
                 className={`transition-colors duration-300 pb-1 ${
+                  item.pushRight ? 'ml-auto' : ''
+                } ${
                   isActive
                     ? 'text-primary font-semibold border-b-2 border-primary'
                     : 'text-on-surface-variant hover:text-primary'
@@ -88,10 +98,10 @@ export const Header = () => {
         <div className="text-center absolute left-1/2 transform -translate-x-1/2 md:static md:translate-x-0">
           <button
             onClick={() => navigateTo('home')}
-            className="kasheeda-script text-primary block hover:opacity-90 transition-opacity leading-none"
-            style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
+            aria-label="Kasheeda — Home"
+            className="block hover:opacity-90 transition-opacity"
           >
-            Kasheeda
+            <Wordmark className="h-8 md:h-10 w-auto" />
           </button>
         </div>
 
@@ -106,9 +116,9 @@ export const Header = () => {
           </button>
 
           <button
-            onClick={() => navigateTo('catalog')}
+            onClick={() => setIsWishlistOpen(true)}
             aria-label="Wishlist"
-            className="p-2 hover:opacity-80 transition-opacity relative hidden sm:block"
+            className="p-2 hover:opacity-80 transition-opacity relative"
           >
             <span className="material-symbols-outlined text-xl">favorite</span>
             {wishlist.length > 0 && (
@@ -129,13 +139,6 @@ export const Header = () => {
                 {cartCount}
               </span>
             )}
-          </button>
-
-          <button
-            aria-label="Profile"
-            className="p-2 hover:opacity-80 transition-opacity hidden md:block"
-          >
-            <span className="material-symbols-outlined text-xl">person</span>
           </button>
         </div>
       </div>

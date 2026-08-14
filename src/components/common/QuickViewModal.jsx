@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useShop } from '../../context/ShopContext';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 export const QuickViewModal = () => {
   const { quickViewProduct, setQuickViewProduct, addToCart, navigateTo } = useShop();
   const [selectedColor, setSelectedColor] = useState(null);
+
+  useBodyScrollLock(Boolean(quickViewProduct));
+
+  // Clear the picked colour when a different product is opened.
+  useEffect(() => {
+    setSelectedColor(null);
+  }, [quickViewProduct]);
 
   if (!quickViewProduct) return null;
 
@@ -12,7 +20,7 @@ export const QuickViewModal = () => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fadeIn">
       {/* Modal Card */}
-      <div className="bg-surface border border-secondary/30 rounded max-w-3xl w-full overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[90vh]">
+      <div className="bg-surface rounded max-w-3xl w-full overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[90vh]">
         {/* Close Button */}
         <button
           onClick={() => setQuickViewProduct(null)}
@@ -32,7 +40,7 @@ export const QuickViewModal = () => {
         </div>
 
         {/* Product Information */}
-        <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto">
+        <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto no-scrollbar">
           <div>
             <span className="font-label-caps text-label-caps text-secondary uppercase tracking-widest block mb-1">
               {quickViewProduct.category}

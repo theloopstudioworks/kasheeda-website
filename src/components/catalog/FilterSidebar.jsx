@@ -1,7 +1,19 @@
-import React, { useState } from 'react';
-import { OCCASIONS, PRICE_RANGES } from '../../data/products';
+import React, { useState, useEffect } from 'react';
+import {
+  OCCASIONS,
+  PRICE_RANGES,
+  getFabricsForCategory,
+  getColorsForCategory,
+} from '../../data/products';
+
+// How many entries to show before the "Show more" toggle kicks in.
+const FABRIC_PREVIEW = 5;
+const COLOR_PREVIEW = 10;
 
 export const FilterSidebar = ({
+  selectedCategory,
+  selectedFabric,
+  setSelectedFabric,
   selectedOccasion,
   setSelectedOccasion,
   selectedPriceRange,
@@ -10,24 +22,96 @@ export const FilterSidebar = ({
   setSelectedColorFilter,
 }) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [showAllFabrics, setShowAllFabrics] = useState(false);
+  const [showAllColors, setShowAllColors] = useState(false);
 
-  const colors = [
-    { name: 'Deep Maroon', hex: '#800020' },
-    { name: 'Ivory Cream', hex: '#f5ece7' },
-    { name: 'Warm Charcoal', hex: '#272725' },
-    { name: 'Antique Gold', hex: '#e9c176' },
-    { name: 'Crimson Red', hex: '#af2b3e' },
-    { name: 'Pure White', hex: '#ffffff' },
-  ];
+  // Both lists are derived from the catalog, so adding a product with a new
+  // fabric or colour makes it appear here with no extra edits.
+  const fabrics = getFabricsForCategory(selectedCategory);
+  const colors = getColorsForCategory(selectedCategory);
+
+  // If the active selection sits past the preview cut-off, open the list so the
+  // user can still see what is ticked.
+  useEffect(() => {
+    if (selectedFabric && !fabrics.slice(0, FABRIC_PREVIEW).includes(selectedFabric)) {
+      setShowAllFabrics(true);
+    }
+  }, [selectedFabric, fabrics]);
+
+  useEffect(() => {
+    if (
+      selectedColorFilter &&
+      !colors.slice(0, COLOR_PREVIEW).some((c) => c.name === selectedColorFilter)
+    ) {
+      setShowAllColors(true);
+    }
+  }, [selectedColorFilter, colors]);
+
+  const visibleFabrics = showAllFabrics ? fabrics : fabrics.slice(0, FABRIC_PREVIEW);
+  const visibleColors = showAllColors ? colors : colors.slice(0, COLOR_PREVIEW);
+
+  const toggleButton = (isOpen, setOpen, hiddenCount) => (
+    <button
+      onClick={() => setOpen(!isOpen)}
+      className="mt-4 font-label-caps text-label-caps text-primary uppercase tracking-wider underline underline-offset-4 hover:text-secondary transition-colors"
+    >
+      {isOpen ? 'Show Less' : `Show ${hiddenCount} More`}
+    </button>
+  );
+
+  const heading = (label) => (
+    <h3 className="font-label-caps text-label-caps text-primary mb-4 uppercase tracking-widest font-semibold">
+      {label}
+    </h3>
+  );
 
   const content = (
     <div className="space-y-8">
+      {/* Fabric Filter */}
+      {fabrics.length > 1 && (
+        <div className="border-b border-outline-variant/30 pb-6">
+          {heading('Fabric')}
+          <div className="space-y-2 font-body-md text-body-md text-on-surface-variant">
+            {visibleFabrics.map((fabric) => {
+              const isSelected = selectedFabric === fabric;
+              return (
+                <button
+                  key={fabric}
+                  onClick={() => setSelectedFabric(isSelected ? null : fabric)}
+                  className={`w-full flex items-center gap-3 text-left group transition-colors ${
+                    isSelected ? 'text-primary font-semibold' : 'hover:text-primary'
+                  }`}
+                >
+                  <span
+                    className={`w-4 h-4 border rounded flex items-center justify-center transition-colors shrink-0 ${
+                      isSelected
+                        ? 'border-primary bg-primary text-on-primary'
+                        : 'border-secondary group-hover:border-primary'
+                    }`}
+                  >
+                    {isSelected && (
+                      <span className="material-symbols-outlined text-[10px]">
+                        check
+                      </span>
+                    )}
+                  </span>
+                  {fabric}
+                </button>
+              );
+            })}
+          </div>
+          {fabrics.length > FABRIC_PREVIEW &&
+            toggleButton(
+              showAllFabrics,
+              setShowAllFabrics,
+              fabrics.length - FABRIC_PREVIEW
+            )}
+        </div>
+      )}
+
       {/* Price Filter */}
       <div className="border-b border-outline-variant/30 pb-6">
-        <h3 className="font-label-caps text-label-caps text-primary mb-4 flex justify-between items-center cursor-pointer uppercase tracking-widest font-semibold">
-          Price
-          <span className="material-symbols-outlined text-sm">expand_more</span>
-        </h3>
+        {heading('Price')}
         <div className="space-y-3 font-body-md text-body-md text-on-surface-variant">
           {PRICE_RANGES.map((range) => {
             const isSelected = selectedPriceRange?.id === range.id;
@@ -63,12 +147,9 @@ export const FilterSidebar = ({
 
       {/* Color Filter */}
       <div className="border-b border-outline-variant/30 pb-6">
-        <h3 className="font-label-caps text-label-caps text-primary mb-4 flex justify-between items-center cursor-pointer uppercase tracking-widest font-semibold">
-          Color
-          <span className="material-symbols-outlined text-sm">expand_more</span>
-        </h3>
+        {heading('Color')}
         <div className="flex flex-wrap gap-3">
-          {colors.map((c) => {
+          {visibleColors.map((c) => {
             const isSelected = selectedColorFilter === c.name;
             return (
               <button
@@ -87,14 +168,17 @@ export const FilterSidebar = ({
             );
           })}
         </div>
+        {colors.length > COLOR_PREVIEW &&
+          toggleButton(
+            showAllColors,
+            setShowAllColors,
+            colors.length - COLOR_PREVIEW
+          )}
       </div>
 
       {/* Occasion Filter */}
       <div className="pb-6">
-        <h3 className="font-label-caps text-label-caps text-primary mb-4 flex justify-between items-center cursor-pointer uppercase tracking-widest font-semibold">
-          Occasion
-          <span className="material-symbols-outlined text-sm">expand_more</span>
-        </h3>
+        {heading('Occasion')}
         <div className="space-y-3 font-body-md text-body-md text-on-surface-variant">
           {OCCASIONS.map((occ) => {
             const isSelected = selectedOccasion === occ;
