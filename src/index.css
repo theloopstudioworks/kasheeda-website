@@ -22,6 +22,20 @@
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   vertical-align: middle;
+  /* Every glyph is exactly 1em wide, so reserving that box keeps the header
+     from reflowing when the icon font finishes loading — and clips the
+     ligature text if the font never arrives at all. */
+  display: inline-block;
+  width: 1em;
+  line-height: 1;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Set on <html> until the icon font reports ready (see the script in
+   index.html), so no fragment of the ligature name is ever painted. */
+.icons-loading .material-symbols-outlined {
+  visibility: hidden;
 }
 
 /* Custom Scrollbar — Kasheeda Crimson Aesthetic */
@@ -97,6 +111,27 @@
   overflow: hidden;
 }
 
+/* The two card faces (scattered pillar / combined brand name) are stacked on
+   top of each other and cross-fade. In normal flow the hidden face still took
+   up space and pushed the visible one off centre — which clipped the wordmark
+   against the top edge on small cards. */
+.kcard-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .kcard-face {
+    padding: 1.5rem 1.1rem;
+  }
+}
+
 /* Subtle sheen overlay */
 .kcard-inner::before {
   content: '';
@@ -137,6 +172,19 @@
   user-select: none;
 }
 
+/* Phone-sized cards carry phone-sized padding — 2.5rem/2rem inside a 230px
+   card leaves almost nothing for the text. */
+@media (max-width: 767px) {
+  .kcard-inner {
+    padding: 1.5rem 1.1rem;
+  }
+  .kcard-number {
+    font-size: 54px;
+    top: 0.6rem;
+    right: 0.9rem;
+  }
+}
+
 /* ─── Kasheeda brand name (script) displayed in combine state ─── */
 .combine-brand-reveal {
   font-family: 'Great Vibes', cursive;
@@ -169,6 +217,317 @@
 @keyframes shimmer {
   0% { background-position: 200% center; }
   100% { background-position: -200% center; }
+}
+
+/* ─── Customer Stories (Instagram reels + reviews) ──────────────────────── */
+
+.stories-section {
+  position: relative;
+  background:
+    radial-gradient(120% 60% at 50% 0%, rgba(196, 18, 48, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #fdf6f6 0%, #faeaea 50%, #fdf6f6 100%);
+  border-top: 1px solid rgba(232, 192, 192, 0.5);
+  border-bottom: 1px solid rgba(232, 192, 192, 0.5);
+}
+
+/* Entrance transitions — driven by inline opacity/transform from React */
+.stories-fade,
+.stories-rise {
+  transition:
+    opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--delay, 0ms),
+    transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--delay, 0ms);
+}
+
+/* ── Collage stage ──
+   Desktop: cards are absolutely positioned from the POSITIONS table in
+   CustomerStoriesSection.jsx so they overlap like a pinned-up collage.
+   Below lg the same cards fall back to a simple grid. */
+.collage-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  /* Card sizes come from the stage WIDTH, so the stage keeps a fixed ratio —
+     that way the vertical rhythm matches the cards on any screen width. */
+  aspect-ratio: 1240 / 700;
+  min-height: 540px;
+  max-height: 78vh;
+}
+
+.collage-item {
+  position: absolute;
+  will-change: transform, opacity;
+  transition:
+    transform 1.05s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms),
+    opacity 0.85s ease var(--delay, 0ms);
+}
+
+/* Card shell shared by reels and photos */
+.story-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  display: block;
+  background: #2d1010;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  box-shadow: 0 18px 46px rgba(139, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.45s ease, filter 0.45s ease;
+}
+
+.story-card:hover {
+  box-shadow: 0 30px 70px rgba(139, 0, 0, 0.34), 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+
+/* The hover grow sits on the card itself, not on the inner wrapper: moving
+   the wrapper inside an overflow:hidden card exposed a strip of background
+   along the bottom edge. Scaling from the centre can never do that. */
+.story-card {
+  transition: box-shadow 0.45s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.story-card:hover {
+  transform: scale(1.03);
+}
+
+.story-card-lift {
+  width: 100%;
+  height: 100%;
+}
+
+.story-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.story-card:hover .story-media {
+  transform: scale(1.06);
+}
+
+.story-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26, 10, 10, 0.9) 0%, rgba(26, 10, 10, 0.16) 48%, transparent 72%);
+  pointer-events: none;
+}
+
+.story-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(26, 10, 10, 0.35);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 9999px;
+  padding: 6px;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+/* Play button — always visible on reels, it is the main affordance */
+.story-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.92);
+  width: 54px;
+  height: 54px;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: rgba(196, 18, 48, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+  pointer-events: none;
+}
+.story-card:hover .story-play {
+  transform: translate(-50%, -50%) scale(1.12);
+  background: rgba(196, 18, 48, 0.95);
+}
+
+/* Soft pulse ring around the play button */
+.story-play::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  animation: play-pulse 2.6s ease-out infinite;
+}
+
+@keyframes play-pulse {
+  0%   { transform: scale(0.9); opacity: 0.7; }
+  70%  { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+.story-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 14px 15px;
+  text-align: left;
+  pointer-events: none;
+}
+
+/* Quote fills the whole photo card on hover — covering it edge to edge means
+   no strip of the photo is left showing under the text. */
+.story-quote {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 18px 18px;
+  background: linear-gradient(to top, rgba(139, 0, 0, 0.97) 55%, rgba(139, 0, 0, 0.88) 100%);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  text-align: left;
+  pointer-events: none;
+}
+.story-card:hover .story-quote {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* The name/stars strip steps aside while the quote is up */
+.story-caption-photo {
+  transition: opacity 0.3s ease;
+}
+.story-card:hover .story-caption-photo {
+  opacity: 0;
+}
+
+/* ── Mobile reel rail ── */
+.stories-rail {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 20px;
+  padding: 4px 20px 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stories-rail-item {
+  flex: 0 0 62%;
+  max-width: 260px;
+  aspect-ratio: 9 / 16;
+  scroll-snap-align: center;
+}
+
+@media (min-width: 640px) {
+  .stories-rail-item { flex-basis: 38%; }
+}
+
+/* Decorative script tag pinned into the collage */
+.collage-note {
+  font-family: 'Great Vibes', cursive;
+  color: rgba(139, 0, 0, 0.55);
+  line-height: 1.1;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── Lightbox ── */
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(20, 6, 6, 0.82);
+  backdrop-filter: blur(8px);
+  animation: lightbox-in 0.3s ease;
+}
+
+@keyframes lightbox-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.lightbox-panel {
+  position: relative;
+  width: min(420px, 92vw);
+  max-height: 86vh;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #1a0a0a;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55);
+  animation: lightbox-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lightbox-panel-wide {
+  width: min(760px, 94vw);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* On phones the photo lightbox stacks, so cap the image and let the review
+   scroll instead of running off the panel. */
+@media (max-width: 639px) {
+  .lightbox-backdrop { padding: 16px; }
+  .lightbox-panel { border-radius: 14px; }
+  .lightbox-photo { max-height: 44vh; }
+}
+
+@keyframes lightbox-pop {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: rgba(26, 10, 10, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.lightbox-close:hover {
+  background: rgba(196, 18, 48, 0.9);
+  transform: rotate(90deg);
+}
+
+.lightbox-frame {
+  width: 100%;
+  height: min(74vh, 620px);
+  border: 0;
+  display: block;
+  background: #1a0a0a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collage-item,
+  .story-card-lift,
+  .story-media,
+  .story-quote,
+  .stories-fade { transition-duration: 0.01ms; }
+  .story-play::after { animation: none; }
+  .lightbox-backdrop,
+  .lightbox-panel { animation: none; }
 }
 
 /* Floating animation for cards when scattered */

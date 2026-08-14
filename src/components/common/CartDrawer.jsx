@@ -1,6 +1,7 @@
 import React from 'react';
 import { useShop } from '../../context/ShopContext';
 import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
+import { whatsappLink } from '../../data/contact';
 
 export const CartDrawer = () => {
   const {
@@ -30,7 +31,7 @@ export const CartDrawer = () => {
       'en-IN'
     )}%0A%0APlease confirm availability and shipping details.`;
 
-    window.open(`https://wa.me/?text=${message}`, '_blank');
+    window.open(whatsappLink(message), '_blank', 'noopener,noreferrer');
   };
 
   return (

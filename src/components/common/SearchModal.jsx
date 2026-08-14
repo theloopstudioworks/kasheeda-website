@@ -39,7 +39,7 @@ export const SearchModal = () => {
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search Lehengas, Sarees, Kurtas, or Velvet..."
+            placeholder="Search sarees, suit sets, chiffon, banarasi..."
             className="w-full pl-8 pr-4 py-3 bg-transparent border-b border-secondary/50 font-body-lg text-primary focus:outline-none focus:border-primary transition-colors"
           />
         </div>

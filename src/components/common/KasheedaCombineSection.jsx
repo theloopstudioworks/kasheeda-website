@@ -10,6 +10,16 @@ export const KasheedaCombineSection = () => {
   const sectionRef = useRef(null);
   const [progress, setProgress] = useState(0); // 0 = scattered, 1 = combined
   const [isCombined, setIsCombined] = useState(false);
+  const [isNarrow, setIsNarrow] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const onChange = (e) => setIsNarrow(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -97,13 +107,23 @@ export const KasheedaCombineSection = () => {
   const ease = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
   const p = ease(Math.min(progress * 1.1, 1)); // slightly overshoot for snap feel
 
-  // Card size: gets slightly bigger when combined
-  const baseW = 280;
-  const baseH = 340;
+  // Card size: gets slightly bigger when combined. On phones the card is sized
+  // from the viewport instead of a fixed 280px, which would otherwise take up
+  // almost the whole screen width and leave no room for the scatter.
+  const vw = typeof window !== 'undefined' ? window.innerWidth : 1280;
+  const baseW = isNarrow ? Math.min(270, vw * 0.68) : 280;
+  const baseH = baseW * (340 / 280);
+  const growW = isNarrow ? 30 : 60;
+  const growH = growW * (340 / 280);
+
+  // How far the cards fly apart. The desktop spread (±42vw) throws cards off
+  // the side of a phone. The scale below is the largest that still keeps a
+  // 0.68vw-wide card fully on screen at its furthest scattered point.
+  const scatterScale = isNarrow ? 0.34 : 1;
 
   // The site header is sticky and floats over the top of this stage, so the
   // whole card composition is nudged down to stay clear of it.
-  const HEADER_OFFSET = 30;
+  const HEADER_OFFSET = isNarrow ? 56 : 30;
 
   return (
     <section
@@ -117,7 +137,7 @@ export const KasheedaCombineSection = () => {
       >
         {/* ── Section header ── */}
         <div
-          className="absolute top-0 left-0 right-0 text-center px-4 pt-28 z-20"
+          className="absolute top-0 left-0 right-0 text-center px-4 pt-20 md:pt-28 z-20"
           style={{
             opacity: Math.max(0, 1 - progress * 3),
             transform: `translateY(${-progress * 20}px)`,
@@ -127,10 +147,10 @@ export const KasheedaCombineSection = () => {
           <span className="font-label-caps text-label-caps text-secondary tracking-widest uppercase block mb-3">
             Our Promise
           </span>
-          <h2 className="font-brand text-4xl md:text-5xl text-primary font-light italic">
+          <h2 className="font-brand text-3xl md:text-5xl text-primary font-light italic">
             The Kasheeda Way
           </h2>
-          <p className="text-on-surface-variant font-body-md text-body-md mt-3 max-w-md mx-auto">
+          <p className="text-on-surface-variant font-body-md text-sm md:text-body-md mt-2 md:mt-3 max-w-md mx-auto">
             Scroll to see how our three pillars unite into one name
           </p>
           {/* Scroll indicator arrow */}
@@ -160,8 +180,8 @@ export const KasheedaCombineSection = () => {
 
         {/* ── Cards ── */}
         {cards.map((card, i) => {
-          const scatterX = card.scatterX; // vw
-          const scatterY = card.scatterY; // vh
+          const scatterX = card.scatterX * scatterScale; // vw
+          const scatterY = card.scatterY * scatterScale; // vh
           const scatterR = card.scatterRotate; // deg
 
           const tx = scatterX * (1 - p); // lerp to 0
@@ -180,10 +200,10 @@ export const KasheedaCombineSection = () => {
               key={card.id}
               className={`kcard ${card.variant} ${floatClass}`}
               style={{
-                width: `${baseW + p * 60}px`,
-                height: `${baseH + p * 80}px`,
-                left: `calc(50% + ${tx}vw - ${(baseW + p * 60) / 2}px)`,
-                top: `calc(50% + ${ty}vh - ${(baseH + p * 80) / 2}px + ${HEADER_OFFSET}px)`,
+                width: `${baseW + p * growW}px`,
+                height: `${baseH + p * growH}px`,
+                left: `calc(50% + ${tx}vw - ${(baseW + p * growW) / 2}px)`,
+                top: `calc(50% + ${ty}vh - ${(baseH + p * growH) / 2}px + ${HEADER_OFFSET}px)`,
                 transform: `rotate(${cssRotVar})`,
                 '--rot': cssRotVar,
                 zIndex,
@@ -207,13 +227,11 @@ export const KasheedaCombineSection = () => {
                 {/* Show brand name when combined (card 1) */}
                 {card.id === 1 && (
                   <div
+                    className="kcard-face"
                     style={{
                       opacity: isCombined ? 1 : 0,
                       transform: isCombined ? 'scale(1) translateY(0)' : 'scale(0.8) translateY(10px)',
                       transition: 'opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
                       gap: '12px',
                     }}
                   >
@@ -240,12 +258,10 @@ export const KasheedaCombineSection = () => {
 
                 {/* Show card content when scattered */}
                 <div
+                  className="kcard-face"
                   style={{
                     opacity: isCombined ? 0 : 1,
                     transition: 'opacity 0.3s ease',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
                     gap: '16px',
                   }}
                 >
@@ -284,7 +300,7 @@ export const KasheedaCombineSection = () => {
 
         {/* ── Scattered state: labels below cards ── */}
         <div
-          className="absolute bottom-16 left-0 right-0 flex justify-center gap-8 px-4"
+          className="absolute bottom-10 md:bottom-16 left-0 right-0 flex justify-center gap-4 md:gap-8 px-4"
           style={{
             opacity: Math.max(0, 1 - progress * 4),
             pointerEvents: 'none',
@@ -301,7 +317,7 @@ export const KasheedaCombineSection = () => {
 
         {/* ── Combined state: bottom tagline ── */}
         <div
-          className="absolute bottom-16 left-0 right-0 text-center"
+          className="absolute bottom-10 md:bottom-16 left-0 right-0 text-center px-4"
           style={{
             opacity: isCombined ? 1 : 0,
             transform: isCombined ? 'translateY(0)' : 'translateY(12px)',
@@ -309,15 +325,16 @@ export const KasheedaCombineSection = () => {
             pointerEvents: 'none',
           }}
         >
-          <p className="font-brand italic text-primary text-xl font-light">
+          <p className="font-brand italic text-primary text-lg md:text-xl font-light">
             "Where every thread tells a story"
           </p>
+          {/* The rules are dropped on phones — the caption alone fills the width */}
           <div className="flex items-center justify-center gap-3 mt-2">
-            <div className="h-px w-12 bg-primary/30" />
-            <span className="shimmer-text font-label-caps text-[11px] tracking-[0.3em] uppercase">
+            <div className="hidden md:block h-px w-12 bg-primary/30" />
+            <span className="shimmer-text font-label-caps text-[9px] md:text-[11px] tracking-[0.2em] md:tracking-[0.3em] uppercase">
               Hand Picked · In House Design · Crafted With Love
             </span>
-            <div className="h-px w-12 bg-primary/30" />
+            <div className="hidden md:block h-px w-12 bg-primary/30" />
           </div>
         </div>
       </div>

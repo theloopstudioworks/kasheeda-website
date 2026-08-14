@@ -29,16 +29,11 @@ export const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // `hidden` keeps a link out of the desktop bar without deleting it — flip the
-  // flag to bring a category back. The mobile menu still lists all of them.
-  // `pushRight` gets margin-left:auto, separating it from anything before it.
   const navLinks = [
-    { label: 'Sarees', category: 'Sarees', hidden: true },
-    { label: 'Suits', category: 'Suits', hidden: true },
-    { label: 'Lehengas', category: 'Lehengas', hidden: true },
-    { label: 'Kurtas', category: 'Kurtas', hidden: true },
-    { label: 'Collections', category: 'All', pushRight: true },
-    { label: 'Journal', page: 'journal' },
+    { label: 'Sarees', category: 'Sarees' },
+    { label: 'Suits', category: 'Suits' },
+    { label: 'Collections', category: 'All' },
+    { label: 'Blogs', page: 'blog' },
   ];
 
   return (
@@ -49,22 +44,29 @@ export const Header = () => {
       }`}
     >
       <div className="flex justify-between items-center h-16 px-margin-mobile max-w-container-max mx-auto">
-        {/* Mobile Menu Trigger */}
-        <div className="flex items-center md:hidden">
+        {/* Mobile: hamburger, then search sitting beside it */}
+        <div className="flex items-center gap-1 md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Toggle Menu"
             className="text-primary p-2 -ml-2 hover:opacity-80 transition-opacity"
           >
-            <span className="material-symbols-outlined text-2xl">menu</span>
+            <span className="material-symbols-outlined text-icon">menu</span>
+          </button>
+          <button
+            onClick={() => setIsSearchOpen(true)}
+            aria-label="Search"
+            className="text-primary p-2 hover:opacity-80 transition-opacity"
+          >
+            <span className="material-symbols-outlined text-icon">search</span>
           </button>
         </div>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-8 font-label-caps text-label-caps">
+        {/* text-label-caps is 12px — too small for the desktop bar, so the size,
+            tracking and weight are set explicitly here instead. */}
+        <nav className="hidden md:flex items-center space-x-8 font-label-caps text-[15px] tracking-[0.1em] font-semibold">
           {navLinks.map((item) => {
-            if (item.hidden) return null;
-
             const isActive =
               item.page
                 ? activePage === item.page
@@ -81,8 +83,6 @@ export const Header = () => {
                   }
                 }}
                 className={`transition-colors duration-300 pb-1 ${
-                  item.pushRight ? 'ml-auto' : ''
-                } ${
                   isActive
                     ? 'text-primary font-semibold border-b-2 border-primary'
                     : 'text-on-surface-variant hover:text-primary'
@@ -107,12 +107,13 @@ export const Header = () => {
 
         {/* Trailing Action Icons */}
         <div className="flex items-center space-x-3 text-primary">
+          {/* Search lives beside the hamburger on mobile, so hide this copy */}
           <button
             onClick={() => setIsSearchOpen(true)}
             aria-label="Search"
-            className="p-2 hover:opacity-80 transition-opacity relative"
+            className="p-2 hover:opacity-80 transition-opacity relative hidden md:block"
           >
-            <span className="material-symbols-outlined text-xl">search</span>
+            <span className="material-symbols-outlined text-icon">search</span>
           </button>
 
           <button
@@ -120,7 +121,7 @@ export const Header = () => {
             aria-label="Wishlist"
             className="p-2 hover:opacity-80 transition-opacity relative"
           >
-            <span className="material-symbols-outlined text-xl">favorite</span>
+            <span className="material-symbols-outlined text-icon">favorite</span>
             {wishlist.length > 0 && (
               <span className="absolute top-1 right-1 w-4 h-4 bg-secondary text-on-secondary rounded-full text-[10px] font-bold flex items-center justify-center">
                 {wishlist.length}
@@ -133,7 +134,7 @@ export const Header = () => {
             aria-label="Shopping Bag"
             className="p-2 hover:opacity-80 transition-opacity relative"
           >
-            <span className="material-symbols-outlined text-xl">shopping_bag</span>
+            <span className="material-symbols-outlined text-icon">shopping_bag</span>
             {cartCount > 0 && (
               <span className="absolute top-1 right-1 w-4 h-4 bg-primary text-on-primary rounded-full text-[10px] font-bold flex items-center justify-center">
                 {cartCount}

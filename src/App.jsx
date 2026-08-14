@@ -7,10 +7,11 @@ import { CartDrawer } from './components/common/CartDrawer';
 import { WishlistDrawer } from './components/common/WishlistDrawer';
 import { SearchModal } from './components/common/SearchModal';
 import { MobileMenu } from './components/common/MobileMenu';
+import { SocialRail } from './components/common/SocialRail';
 import { HomePage } from './pages/HomePage';
 import { CatalogPage } from './pages/CatalogPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
-import { JournalPage } from './pages/JournalPage';
+import { BlogPage } from './pages/BlogPage';
 import { InfoPage } from './pages/InfoPage';
 
 const MainContent = () => {
@@ -23,10 +24,12 @@ const MainContent = () => {
         {activePage === 'home' && <HomePage />}
         {activePage === 'catalog' && <CatalogPage />}
         {activePage === 'detail' && <ProductDetailPage />}
-        {activePage === 'journal' && <JournalPage />}
+        {activePage === 'blog' && <BlogPage />}
         {activePage === 'info' && <InfoPage />}
       </div>
       <Footer />
+
+      <SocialRail />
 
       {/* Global Modals & Drawers */}
       <QuickViewModal />

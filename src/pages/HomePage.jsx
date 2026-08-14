@@ -1,46 +1,53 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useShop } from '../context/ShopContext';
 import { ProductCard } from '../components/common/ProductCard';
 import { PRODUCTS } from '../data/products';
 import { KasheedaCombineSection } from '../components/common/KasheedaCombineSection';
+import { CustomerStoriesSection } from '../components/common/CustomerStoriesSection';
 import { Wordmark } from '../components/common/Wordmark';
+import heroSlide1 from '../assets/hero-banner-carousel-image-1.jpg';
+import heroSlide2 from '../assets/hero-banner-carousel-image-2.jpg';
+import heroSlide3 from '../assets/hero-banner-carousel-image-3.jpg';
+import heroSlide4 from '../assets/hero-banner-carousel-image-4.jpg';
 
-// Bento grid tiles. `span` controls the tile size within the 3-column grid.
+// Hero carousel — advances on its own every SLIDE_MS.
+const HERO_SLIDES = [
+  { src: heroSlide1, alt: 'Stacked silk sarees in lime, marigold and teal with gold zari borders' },
+  { src: heroSlide2, alt: 'Red and green Banarasi silk saree with a gold paisley border' },
+  { src: heroSlide3, alt: 'Chiffon sarees in ice blue, marigold and red with gold embroidery' },
+  { src: heroSlide4, alt: 'Three block-printed Maheshwari cotton silk suit sets' },
+];
+const SLIDE_MS = 2500;
+
+// Bento grid tiles. `span` controls the tile size within the 2-column grid.
 const CATEGORY_CARDS = [
   {
     category: 'Sarees',
     label: 'Sarees',
     cta: 'Discover Heritage Sarees',
-    span: 'md:row-span-2',
+    span: '',
     image: '/sarees/khaddi-chiffon-banarasi-6999.png',
   },
   {
     category: 'Suits',
     label: 'Suits',
     cta: 'Shop Unstitched Suit Sets',
-    span: 'md:col-span-2',
+    span: '',
     image: '/suits/maheshwari-cotton-silk-turquoise-2599.png',
-  },
-  {
-    category: 'Lehengas',
-    label: 'Lehengas',
-    cta: 'Explore Bridal & Festive Lehengas',
-    span: '',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCBbXp0lj8Mm1BkK8kkUg2Q12u0ks85kgqe8Mw33cX23mpoYe3Gvq1A6JeeTGDLzYlxkDEqMjBQeeH7vtv0Upt3dxQPGE-txubkaic-os56Y0kkldlZ_mQW23Qs7CfDchzb-5u1SWrBjCsyWkZkyczG_ru8uHAcore2Z64ycgqLBYO9EHq52tnWXzG55XvunSWoOkE5TPbHH0tIUNiNHxKeAyR-5usrwTrmAwgKdi_eaHevxuPCteCLQdu-p7v1yyydkYd_fBgKqZif',
-  },
-  {
-    category: 'Kurtas',
-    label: 'Kurtas',
-    cta: 'View Handspun Minimalist Kurtas',
-    span: '',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDRHKbf4aum9FxDXEPtN44EicA98c3jQiJFWP8ADuyzL0MY_cWyLVY5wVzICqsLJqR9xIR8NBMMMrY8mXpjDUGGEg76CeRuIkCJrfi3oAUQO_Y-xpMgjqNMFMlPKPM1YRp4PI8J_fl_6Hzf84qtTuM2UgSdK-HR-QaOMFXsh4DPPQ2ndS2Jn2jtbiIAjma9fLprhvDobQLJHGW8WDk_oXTLaojlffe0Ni6_NuXp4rZoArpfON7yLXhE0kbnhIS6Et-uBizEUaDOqa4B',
   },
 ];
 
 export const HomePage = () => {
   const { navigateTo } = useShop();
+  const [slide, setSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(
+      () => setSlide((i) => (i + 1) % HERO_SLIDES.length),
+      SLIDE_MS
+    );
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     // Reveal animation on scroll
@@ -64,13 +71,24 @@ export const HomePage = () => {
   return (
     <div className="flex-grow">
       {/* Hero Section */}
-      <section className="relative w-full h-[85vh] min-h-[600px] max-h-[960px] overflow-hidden flex items-center justify-center">
+      {/* id is read by SocialRail to know when it's over dark imagery */}
+      <section
+        id="hero-banner"
+        className="relative w-full h-[85vh] min-h-[600px] max-h-[960px] overflow-hidden flex items-center justify-center"
+      >
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC654Uo3BSBc0I1_k98PfcurysyjJYgxipYdTi5lozbNteyVWpJz1269x-dizznKqoK3c211kiILrfLdvZhAypjuOr6uH3UtKBEMyzMBRUJ_Qiu-Y91HhzTeXHeJm_AuBE17GmaqRcRDmB6dytDqoM_zD1nqGGQe8KJRDe28XFA5ZRrrnxrG6Q5c4YPI_-W3TVanTQ14BYPmbaUFAncGTuZaJB0pkNBjN9XgB3zqZN41oBroMJGAf9iOANKufzyMnvT0x3DBUKGrkrd"
-            alt="Kasheeda Ethnic Luxury"
-            className="w-full h-full object-cover object-top filter brightness-[0.82]"
-          />
+          {/* Slides are all stacked; only the active one is faded in. */}
+          {HERO_SLIDES.map((s, i) => (
+            <img
+              key={s.src}
+              src={s.src}
+              alt={s.alt}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              className={`absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.82] transition-opacity duration-1000 ease-in-out ${
+                i === slide ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          ))}
           {/* Deep crimson gradient overlay matching the logo palette */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/40" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#8B0000]/20 to-transparent" />
@@ -101,14 +119,13 @@ export const HomePage = () => {
           </button>
         </div>
 
-        {/* Scroll hint */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-70">
-          <div className="w-px h-12 bg-gradient-to-b from-transparent to-white/70 animate-pulse" />
-        </div>
       </section>
 
       {/* ── KASHEEDA CARD COMBINE SECTION ── */}
       <KasheedaCombineSection />
+
+      {/* ── CUSTOMER STORIES (Instagram reels + reviews) ── */}
+      <CustomerStoriesSection />
 
       {/* Featured Categories (Bento Grid) */}
       <section className="py-24 px-margin-mobile max-w-container-max mx-auto">
@@ -122,7 +139,7 @@ export const HomePage = () => {
           <div className="w-16 h-[1px] bg-primary/30 mx-auto" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter auto-rows-[420px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter auto-rows-[460px]">
           {CATEGORY_CARDS.map((cat) => (
             <div
               key={cat.category}
@@ -160,7 +177,7 @@ export const HomePage = () => {
             "Contemporary Heritage rooted in meticulous handloom traditions."
           </h2>
           <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-2xl mx-auto mb-8">
-            Every Kasheeda creation is a dialogue between legacy Indian textiles and refined modern silhouette aesthetics. Crafted over months by master weavers in Varanasi and Rajasthan.
+            Every Kasheeda creation is a dialogue between legacy Indian textiles and refined modern silhouette aesthetics. Crafted over months by master weavers in Banarasi and Rajasthan.
           </p>
           <div className="flex flex-wrap justify-center gap-8 border-t border-outline-variant/40 pt-8 mt-8 text-on-surface-variant">
             <div className="flex items-center gap-2">
@@ -181,7 +198,9 @@ export const HomePage = () => {
 
       {/* Featured Products Grid */}
       <section className="py-24 px-margin-mobile max-w-container-max mx-auto">
-        <div className="flex justify-between items-end mb-12">
+        {/* Stacks on phones — side by side the heading and the link squeeze
+            each other and the arrow wraps onto its own line. */}
+        <div className="flex flex-col items-start gap-3 sm:flex-row sm:justify-between sm:items-end mb-12">
           <div>
             <span className="font-label-caps text-label-caps text-secondary tracking-widest uppercase block mb-1">
               Curated Selection
@@ -192,7 +211,7 @@ export const HomePage = () => {
           </div>
           <button
             onClick={() => navigateTo('catalog', 'All')}
-            className="font-label-caps text-label-caps text-primary underline hover:text-secondary transition-colors"
+            className="font-label-caps text-label-caps text-primary underline hover:text-secondary transition-colors whitespace-nowrap shrink-0"
           >
             View All Catalog →
           </button>

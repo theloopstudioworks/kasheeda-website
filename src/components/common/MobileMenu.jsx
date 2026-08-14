@@ -12,12 +12,10 @@ export const MobileMenu = () => {
 
   const links = [
     { label: 'Home', page: 'home' },
-    { label: 'Heritage Sarees', page: 'catalog', category: 'Sarees' },
-    { label: 'Unstitched Suit Sets', page: 'catalog', category: 'Suits' },
-    { label: 'Lehengas Collection', page: 'catalog', category: 'Lehengas' },
-    { label: 'Modern Kurtas', page: 'catalog', category: 'Kurtas' },
-    { label: 'All Collections', page: 'catalog', category: 'All' },
-    { label: 'Journal', page: 'journal' },
+    { label: 'Sarees', page: 'catalog', category: 'Sarees' },
+    { label: 'Suits', page: 'catalog', category: 'Suits' },
+    { label: 'Collections', page: 'catalog', category: 'All' },
+    { label: 'Blogs', page: 'blog' },
   ];
 
   return (
@@ -58,7 +56,7 @@ export const MobileMenu = () => {
 
         <div className="border-t border-outline-variant/30 pt-6">
           <p className="font-body-md text-xs text-on-surface-variant mb-2">
-            Kasheeda Boutique • New Delhi
+            Kasheeda Boutique • Dehradun
           </p>
           <p className="font-label-caps text-[10px] text-outline uppercase tracking-wider">
             © 2024 Kasheeda. Crafted Heritage.
