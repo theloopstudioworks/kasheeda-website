@@ -3,6 +3,41 @@ import { useShop } from '../context/ShopContext';
 import { ProductCard } from '../components/common/ProductCard';
 import { PRODUCTS } from '../data/products';
 import { KasheedaCombineSection } from '../components/common/KasheedaCombineSection';
+import { Wordmark } from '../components/common/Wordmark';
+
+// Bento grid tiles. `span` controls the tile size within the 3-column grid.
+const CATEGORY_CARDS = [
+  {
+    category: 'Sarees',
+    label: 'Sarees',
+    cta: 'Discover Heritage Sarees',
+    span: 'md:row-span-2',
+    image: '/sarees/khaddi-chiffon-banarasi-6999.png',
+  },
+  {
+    category: 'Suits',
+    label: 'Suits',
+    cta: 'Shop Unstitched Suit Sets',
+    span: 'md:col-span-2',
+    image: '/suits/maheshwari-cotton-silk-turquoise-2599.png',
+  },
+  {
+    category: 'Lehengas',
+    label: 'Lehengas',
+    cta: 'Explore Bridal & Festive Lehengas',
+    span: '',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCBbXp0lj8Mm1BkK8kkUg2Q12u0ks85kgqe8Mw33cX23mpoYe3Gvq1A6JeeTGDLzYlxkDEqMjBQeeH7vtv0Upt3dxQPGE-txubkaic-os56Y0kkldlZ_mQW23Qs7CfDchzb-5u1SWrBjCsyWkZkyczG_ru8uHAcore2Z64ycgqLBYO9EHq52tnWXzG55XvunSWoOkE5TPbHH0tIUNiNHxKeAyR-5usrwTrmAwgKdi_eaHevxuPCteCLQdu-p7v1yyydkYd_fBgKqZif',
+  },
+  {
+    category: 'Kurtas',
+    label: 'Kurtas',
+    cta: 'View Handspun Minimalist Kurtas',
+    span: '',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDRHKbf4aum9FxDXEPtN44EicA98c3jQiJFWP8ADuyzL0MY_cWyLVY5wVzICqsLJqR9xIR8NBMMMrY8mXpjDUGGEg76CeRuIkCJrfi3oAUQO_Y-xpMgjqNMFMlPKPM1YRp4PI8J_fl_6Hzf84qtTuM2UgSdK-HR-QaOMFXsh4DPPQ2ndS2Jn2jtbiIAjma9fLprhvDobQLJHGW8WDk_oXTLaojlffe0Ni6_NuXp4rZoArpfON7yLXhE0kbnhIS6Et-uBizEUaDOqa4B',
+  },
+];
 
 export const HomePage = () => {
   const { navigateTo } = useShop();
@@ -45,12 +80,12 @@ export const HomePage = () => {
           <span className="font-label-caps text-label-caps text-white/80 uppercase tracking-[0.35em] mb-5">
             Handcrafted Heritage
           </span>
-          {/* Brand name in script style */}
-          <h1
-            className="kasheeda-script text-white drop-shadow-lg mb-4"
-            style={{ fontSize: 'clamp(3.5rem, 10vw, 8rem)', lineHeight: 1.05 }}
-          >
-            Kasheeda
+          {/* Brand wordmark */}
+          <h1 className="mb-4">
+            <Wordmark
+              variant="light"
+              className="w-[min(82vw,620px)] h-auto drop-shadow-lg"
+            />
           </h1>
           <p className="font-brand italic text-white/90 text-xl md:text-2xl font-light mb-3 tracking-wide">
             The Boutique
@@ -76,7 +111,7 @@ export const HomePage = () => {
       <KasheedaCombineSection />
 
       {/* Featured Categories (Bento Grid) */}
-      <section className="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <section className="py-24 px-margin-mobile max-w-container-max mx-auto">
         <div className="text-center mb-16 reveal-up">
           <span className="font-label-caps text-label-caps text-secondary tracking-widest uppercase block mb-2">
             Explore Categories
@@ -88,79 +123,35 @@ export const HomePage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter auto-rows-[420px]">
-          {/* Category 1: Sarees (Tall Card) */}
-          <div
-            onClick={() => navigateTo('catalog', 'Sarees')}
-            className="group relative overflow-hidden block md:row-span-2 cursor-pointer reveal-up shadow-sm hover:shadow-xl transition-shadow duration-300"
-          >
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuATdaSeQhSqd0GoLb-NT8kGIfZNHIawMH85-XTwBl6z5QMMLEmOOEgdzPzMJ1AMYLlTL9C25vTGhKlJDFZlR1VVi_P_caXu1t8aEFU8Twdi3f0t7tR7vstV0EVenF9NstfdGHiir7SMC7z4bg0SMScxeiYEspZ3R2NlnGBZJ2LnT_STt2jQO42xbNazxDRHddJ9geXEA8ZBVKck07j-7-LrlCrLvmXdcC6zvuZIq2C24Co48A8ePoKDtFgpAGIPDEopnlQddLBAPwBY"
-              alt="Sarees Category"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a0a]/90 via-[#1a0a0a]/20 to-transparent flex flex-col justify-end p-8">
-              <span className="font-label-caps text-label-caps text-accent-rose tracking-widest uppercase mb-2">
-                Category
-              </span>
-              <h3 className="font-brand text-headline-sm text-white font-light italic group-hover:text-rose-200 transition-colors">
-                Sarees
-              </h3>
-              <span className="font-label-caps text-xs text-white/70 mt-1 group-hover:text-white/90 transition-colors">
-                Discover Heritage Sarees →
-              </span>
+          {CATEGORY_CARDS.map((cat) => (
+            <div
+              key={cat.category}
+              onClick={() => navigateTo('catalog', cat.category)}
+              className={`group relative overflow-hidden block cursor-pointer reveal-up shadow-sm hover:shadow-xl transition-shadow duration-300 ${cat.span}`}
+            >
+              <img
+                src={cat.image}
+                alt={`${cat.label} Category`}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a0a]/90 via-[#1a0a0a]/20 to-transparent flex flex-col justify-end p-8">
+                <span className="font-label-caps text-label-caps text-accent-rose tracking-widest uppercase mb-2">
+                  Category
+                </span>
+                <h3 className="font-brand text-headline-sm text-white font-light italic group-hover:text-rose-200 transition-colors">
+                  {cat.label}
+                </h3>
+                <span className="font-label-caps text-xs text-white/70 mt-1 group-hover:text-white/90 transition-colors">
+                  {cat.cta} →
+                </span>
+              </div>
             </div>
-          </div>
-
-          {/* Category 2: Lehengas */}
-          <div
-            onClick={() => navigateTo('catalog', 'Lehengas')}
-            className="group relative overflow-hidden block md:col-span-2 cursor-pointer reveal-up shadow-sm hover:shadow-xl transition-shadow duration-300"
-          >
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBbXp0lj8Mm1BkK8kkUg2Q12u0ks85kgqe8Mw33cX23mpoYe3Gvq1A6JeeTGDLzYlxkDEqMjBQeeH7vtv0Upt3dxQPGE-txubkaic-os56Y0kkldlZ_mQW23Qs7CfDchzb-5u1SWrBjCsyWkZkyczG_ru8uHAcore2Z64ycgqLBYO9EHq52tnWXzG55XvunSWoOkE5TPbHH0tIUNiNHxKeAyR-5usrwTrmAwgKdi_eaHevxuPCteCLQdu-p7v1yyydkYd_fBgKqZif"
-              alt="Lehengas Category"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a0a]/90 via-[#1a0a0a]/20 to-transparent flex flex-col justify-end p-8">
-              <span className="font-label-caps text-label-caps text-accent-rose tracking-widest uppercase mb-2">
-                Category
-              </span>
-              <h3 className="font-brand text-headline-sm text-white font-light italic group-hover:text-rose-200 transition-colors">
-                Lehengas
-              </h3>
-              <span className="font-label-caps text-xs text-white/70 mt-1 group-hover:text-white/90 transition-colors">
-                Explore Bridal & Festive Lehengas →
-              </span>
-            </div>
-          </div>
-
-          {/* Category 3: Kurtas */}
-          <div
-            onClick={() => navigateTo('catalog', 'Kurtas')}
-            className="group relative overflow-hidden block md:col-span-2 cursor-pointer reveal-up shadow-sm hover:shadow-xl transition-shadow duration-300"
-          >
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRHKbf4aum9FxDXEPtN44EicA98c3jQiJFWP8ADuyzL0MY_cWyLVY5wVzICqsLJqR9xIR8NBMMMrY8mXpjDUGGEg76CeRuIkCJrfi3oAUQO_Y-xpMgjqNMFMlPKPM1YRp4PI8J_fl_6Hzf84qtTuM2UgSdK-HR-QaOMFXsh4DPPQ2ndS2Jn2jtbiIAjma9fLprhvDobQLJHGW8WDk_oXTLaojlffe0Ni6_NuXp4rZoArpfON7yLXhE0kbnhIS6Et-uBizEUaDOqa4B"
-              alt="Kurtas Category"
-              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a0a]/90 via-[#1a0a0a]/20 to-transparent flex flex-col justify-end p-8">
-              <span className="font-label-caps text-label-caps text-accent-rose tracking-widest uppercase mb-2">
-                Category
-              </span>
-              <h3 className="font-brand text-headline-sm text-white font-light italic group-hover:text-rose-200 transition-colors">
-                Kurtas
-              </h3>
-              <span className="font-label-caps text-xs text-white/70 mt-1 group-hover:text-white/90 transition-colors">
-                View Handspun Minimalist Kurtas →
-              </span>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* Brand Philosophy Section */}
-      <section className="py-20 bg-surface-container-low border-y border-outline-variant/30 px-margin-mobile md:px-margin-desktop">
+      <section className="py-20 bg-surface-container-low border-y border-outline-variant/30 px-margin-mobile">
         <div className="max-w-4xl mx-auto text-center reveal-up">
           <span className="font-label-caps text-label-caps text-secondary tracking-widest uppercase block mb-3">
             Our Brand Philosophy
@@ -189,7 +180,7 @@ export const HomePage = () => {
       </section>
 
       {/* Featured Products Grid */}
-      <section className="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <section className="py-24 px-margin-mobile max-w-container-max mx-auto">
         <div className="flex justify-between items-end mb-12">
           <div>
             <span className="font-label-caps text-label-caps text-secondary tracking-widest uppercase block mb-1">

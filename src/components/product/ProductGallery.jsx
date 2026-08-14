@@ -1,15 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 export const ProductGallery = ({ images, title }) => {
-  const imageList = [
-    { label: 'Main View', url: images.main },
-    { label: 'Embroidery Detail', url: images.detail || images.main },
-    { label: 'Drape View', url: images.drape || images.main },
-    { label: 'Full View', url: images.full || images.main },
-  ];
+  // Only list views that actually exist, so a single-image product doesn't
+  // render the same thumbnail four times.
+  const imageList = useMemo(
+    () =>
+      [
+        { label: 'Main View', url: images.main },
+        { label: 'Embroidery Detail', url: images.detail },
+        { label: 'Drape View', url: images.drape },
+        { label: 'Full View', url: images.full },
+      ].filter((img) => Boolean(img.url)),
+    [images]
+  );
 
-  const [activeImage, setActiveImage] = useState(imageList[0].url);
+  const [activeImage, setActiveImage] = useState(images.main);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  useBodyScrollLock(isVideoModalOpen);
+
+  // Navigating between products (e.g. from "You May Also Admire") swaps the
+  // props without remounting, so reset the active image whenever it changes.
+  useEffect(() => {
+    setActiveImage(images.main);
+  }, [images]);
 
   return (
     <section className="lg:col-span-7 flex flex-col gap-base">
@@ -23,7 +38,11 @@ export const ProductGallery = ({ images, title }) => {
       </div>
 
       {/* Thumbnails Grid */}
-      <div className="grid grid-cols-4 gap-base mt-2">
+      <div
+        className={`grid grid-cols-4 gap-base mt-2 ${
+          imageList.length < 2 ? 'hidden' : ''
+        }`}
+      >
         {imageList.map((img, idx) => (
           <div
             key={idx}

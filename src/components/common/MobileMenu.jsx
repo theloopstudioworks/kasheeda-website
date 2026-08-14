@@ -1,15 +1,20 @@
 import React from 'react';
 import { useShop } from '../../context/ShopContext';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
+import { Wordmark } from './Wordmark';
 
 export const MobileMenu = () => {
   const { isMobileMenuOpen, setIsMobileMenuOpen, navigateTo } = useShop();
+
+  useBodyScrollLock(isMobileMenuOpen);
 
   if (!isMobileMenuOpen) return null;
 
   const links = [
     { label: 'Home', page: 'home' },
-    { label: 'Lehengas Collection', page: 'catalog', category: 'Lehengas' },
     { label: 'Heritage Sarees', page: 'catalog', category: 'Sarees' },
+    { label: 'Unstitched Suit Sets', page: 'catalog', category: 'Suits' },
+    { label: 'Lehengas Collection', page: 'catalog', category: 'Lehengas' },
     { label: 'Modern Kurtas', page: 'catalog', category: 'Kurtas' },
     { label: 'All Collections', page: 'catalog', category: 'All' },
     { label: 'Journal', page: 'journal' },
@@ -26,7 +31,7 @@ export const MobileMenu = () => {
       <div className="relative w-4/5 max-w-sm bg-surface h-full shadow-2xl p-6 flex flex-col justify-between z-10 border-r border-outline-variant/30">
         <div>
           <div className="flex justify-between items-center mb-8 border-b border-outline-variant/30 pb-4">
-            <span className="font-display-lg text-2xl text-primary">Kasheeda</span>
+            <Wordmark className="h-8 w-auto" />
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="text-primary p-1"

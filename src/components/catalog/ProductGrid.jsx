@@ -3,8 +3,11 @@ import { ProductCard } from '../common/ProductCard';
 
 export const ProductGrid = ({
   products,
+  totalCount,
   selectedCategory,
   setSelectedCategory,
+  selectedFabric,
+  setSelectedFabric,
   selectedOccasion,
   setSelectedOccasion,
   selectedPriceRange,
@@ -15,19 +18,36 @@ export const ProductGrid = ({
   setSortBy,
   currentPage,
   setCurrentPage,
+  totalPages,
 }) => {
   const hasActiveFilters =
     selectedCategory !== 'All' ||
+    selectedFabric !== null ||
     selectedOccasion !== null ||
     selectedPriceRange !== null ||
     selectedColorFilter !== null;
 
   const clearAllFilters = () => {
     setSelectedCategory('All');
+    setSelectedFabric(null);
     setSelectedOccasion(null);
     setSelectedPriceRange(null);
     setSelectedColorFilter(null);
   };
+
+  const chip = (label, onClear) => (
+    <span
+      key={label}
+      className="px-3 py-1 border border-secondary rounded-full font-label-caps text-label-caps text-primary flex items-center gap-1 bg-surface-container-low"
+    >
+      {label}
+      <button onClick={onClear} className="hover:text-secondary ml-1">
+        <span className="material-symbols-outlined text-[14px]">close</span>
+      </button>
+    </span>
+  );
+
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
     <div className="flex-1">
@@ -35,53 +55,20 @@ export const ProductGrid = ({
       <div className="flex flex-wrap justify-between items-center mb-8 gap-4 pb-4 border-b border-outline-variant/20">
         {/* Active Filter Tags */}
         <div className="flex flex-wrap items-center gap-2">
-          {selectedCategory !== 'All' && (
-            <span className="px-3 py-1 border border-secondary rounded-full font-label-caps text-label-caps text-primary flex items-center gap-1 bg-surface-container-low">
-              Category: {selectedCategory}
-              <button
-                onClick={() => setSelectedCategory('All')}
-                className="hover:text-secondary ml-1"
-              >
-                <span className="material-symbols-outlined text-[14px]">close</span>
-              </button>
-            </span>
-          )}
+          {selectedCategory !== 'All' &&
+            chip(`Category: ${selectedCategory}`, () => setSelectedCategory('All'))}
 
-          {selectedOccasion && (
-            <span className="px-3 py-1 border border-secondary rounded-full font-label-caps text-label-caps text-primary flex items-center gap-1 bg-surface-container-low">
-              {selectedOccasion}
-              <button
-                onClick={() => setSelectedOccasion(null)}
-                className="hover:text-secondary ml-1"
-              >
-                <span className="material-symbols-outlined text-[14px]">close</span>
-              </button>
-            </span>
-          )}
+          {selectedFabric &&
+            chip(`Fabric: ${selectedFabric}`, () => setSelectedFabric(null))}
 
-          {selectedPriceRange && (
-            <span className="px-3 py-1 border border-secondary rounded-full font-label-caps text-label-caps text-primary flex items-center gap-1 bg-surface-container-low">
-              {selectedPriceRange.label}
-              <button
-                onClick={() => setSelectedPriceRange(null)}
-                className="hover:text-secondary ml-1"
-              >
-                <span className="material-symbols-outlined text-[14px]">close</span>
-              </button>
-            </span>
-          )}
+          {selectedOccasion &&
+            chip(selectedOccasion, () => setSelectedOccasion(null))}
 
-          {selectedColorFilter && (
-            <span className="px-3 py-1 border border-secondary rounded-full font-label-caps text-label-caps text-primary flex items-center gap-1 bg-surface-container-low">
-              Color: {selectedColorFilter}
-              <button
-                onClick={() => setSelectedColorFilter(null)}
-                className="hover:text-secondary ml-1"
-              >
-                <span className="material-symbols-outlined text-[14px]">close</span>
-              </button>
-            </span>
-          )}
+          {selectedPriceRange &&
+            chip(selectedPriceRange.label, () => setSelectedPriceRange(null))}
+
+          {selectedColorFilter &&
+            chip(`Color: ${selectedColorFilter}`, () => setSelectedColorFilter(null))}
 
           {hasActiveFilters && (
             <button
@@ -93,20 +80,25 @@ export const ProductGrid = ({
           )}
         </div>
 
-        {/* Sort Dropdown */}
-        <div className="flex items-center gap-2">
-          <span className="font-label-caps text-label-caps text-on-surface-variant hidden sm:inline uppercase">
-            Sort by:
+        {/* Result count + Sort Dropdown */}
+        <div className="flex items-center gap-4">
+          <span className="font-label-caps text-label-caps text-on-surface-variant hidden sm:inline">
+            {totalCount} {totalCount === 1 ? 'piece' : 'pieces'}
           </span>
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="bg-transparent border-b border-secondary/50 font-label-caps text-label-caps text-primary focus:outline-none focus:border-secondary py-1 cursor-pointer"
-          >
-            <option value="newest">New Arrivals</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="price-low">Price: Low to High</option>
-          </select>
+          <div className="flex items-center gap-2">
+            <span className="font-label-caps text-label-caps text-on-surface-variant hidden sm:inline uppercase">
+              Sort by:
+            </span>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="bg-transparent border-b border-secondary/50 font-label-caps text-label-caps text-primary focus:outline-none focus:border-secondary py-1 cursor-pointer"
+            >
+              <option value="newest">New Arrivals</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="price-low">Price: Low to High</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -137,42 +129,40 @@ export const ProductGrid = ({
         </div>
       )}
 
-      {/* Pagination Controls */}
-      <div className="mt-20 flex justify-center items-center gap-4 font-label-caps text-label-caps">
-        <button
-          disabled={currentPage === 1}
-          onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-          className="w-10 h-10 border border-outline-variant rounded flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-colors disabled:opacity-40"
-        >
-          <span className="material-symbols-outlined">chevron_left</span>
-        </button>
-        <button
-          onClick={() => setCurrentPage(1)}
-          className={`w-10 h-10 border rounded flex items-center justify-center ${
-            currentPage === 1
-              ? 'border-primary bg-primary text-on-primary font-bold'
-              : 'border-outline-variant text-on-surface-variant hover:border-primary'
-          }`}
-        >
-          1
-        </button>
-        <button
-          onClick={() => setCurrentPage(2)}
-          className={`w-10 h-10 border rounded flex items-center justify-center ${
-            currentPage === 2
-              ? 'border-primary bg-primary text-on-primary font-bold'
-              : 'border-outline-variant text-on-surface-variant hover:border-primary'
-          }`}
-        >
-          2
-        </button>
-        <button
-          onClick={() => setCurrentPage((p) => Math.min(p + 1, 2))}
-          className="w-10 h-10 border border-outline-variant rounded flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-colors"
-        >
-          <span className="material-symbols-outlined">chevron_right</span>
-        </button>
-      </div>
+      {/* Pagination Controls — only shown when there is more than one page */}
+      {totalPages > 1 && (
+        <div className="mt-20 flex flex-wrap justify-center items-center gap-3 font-label-caps text-label-caps">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+            className="w-10 h-10 border border-outline-variant rounded flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-colors disabled:opacity-40 disabled:hover:border-outline-variant"
+          >
+            <span className="material-symbols-outlined">chevron_left</span>
+          </button>
+
+          {pageNumbers.map((page) => (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              className={`w-10 h-10 border rounded flex items-center justify-center transition-colors ${
+                currentPage === page
+                  ? 'border-primary bg-primary text-on-primary font-bold'
+                  : 'border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary'
+              }`}
+            >
+              {page}
+            </button>
+          ))}
+
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+            className="w-10 h-10 border border-outline-variant rounded flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-colors disabled:opacity-40 disabled:hover:border-outline-variant"
+          >
+            <span className="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 };

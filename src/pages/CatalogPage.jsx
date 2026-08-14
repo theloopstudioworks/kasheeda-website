@@ -1,11 +1,14 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useShop } from '../context/ShopContext';
-import { PRODUCTS } from '../data/products';
+import { PRODUCTS, CATEGORIES } from '../data/products';
 import { FilterSidebar } from '../components/catalog/FilterSidebar';
 import { ProductGrid } from '../components/catalog/ProductGrid';
 
+const PAGE_SIZE = 12;
+
 export const CatalogPage = () => {
-  const { selectedCategory, setSelectedCategory } = useShop();
+  const { selectedCategory, setSelectedCategory, selectedFabric, setSelectedFabric } =
+    useShop();
 
   const [selectedOccasion, setSelectedOccasion] = useState(null);
   const [selectedPriceRange, setSelectedPriceRange] = useState(null);
@@ -18,6 +21,10 @@ export const CatalogPage = () => {
     return PRODUCTS.filter((product) => {
       // Category filter
       if (selectedCategory !== 'All' && product.category !== selectedCategory) {
+        return false;
+      }
+      // Fabric filter
+      if (selectedFabric && product.fabric !== selectedFabric) {
         return false;
       }
       // Occasion filter
@@ -34,10 +41,8 @@ export const CatalogPage = () => {
         }
       }
       // Color filter
-      if (selectedColorFilter) {
-        if (!product.color.toLowerCase().includes(selectedColorFilter.toLowerCase())) {
-          return false;
-        }
+      if (selectedColorFilter && product.color !== selectedColorFilter) {
+        return false;
       }
       return true;
     }).sort((a, b) => {
@@ -46,24 +51,54 @@ export const CatalogPage = () => {
       if (sortBy === 'newest') return (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0);
       return 0;
     });
-  }, [selectedCategory, selectedOccasion, selectedPriceRange, selectedColorFilter, sortBy]);
+  }, [
+    selectedCategory,
+    selectedFabric,
+    selectedOccasion,
+    selectedPriceRange,
+    selectedColorFilter,
+    sortBy,
+  ]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PAGE_SIZE));
+
+  // A filter change can leave you stranded on a page that no longer exists.
+  useEffect(() => {
+    if (currentPage > totalPages) setCurrentPage(1);
+  }, [currentPage, totalPages]);
+
+  const pagedProducts = filteredProducts.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE
+  );
 
   const categoryTitles = {
     All: 'The Royal Collection',
-    Lehengas: 'Lehengas',
     Sarees: 'Heritage Sarees',
+    Suits: 'Unstitched Suit Sets',
+    Lehengas: 'Lehengas',
     Kurtas: 'Handspun Kurtas',
   };
 
   const categoryDescriptions = {
     All: 'Discover our complete catalog of handcrafted ethnic wear, where traditional Indian textiles meet modern minimalist elegance.',
-    Lehengas: 'Discover our curated collection of handcrafted Lehengas, where heritage craftsmanship meets contemporary elegance.',
-    Sarees: 'Exquisite hand-woven Varanasi silk and organza sarees featuring timeless zari patterns and delicate embroidery.',
-    Kurtas: 'Tailored luxury kurtas in handspun organic linen and raw silk, designed for clean modern silhouettes.',
+    Sarees:
+      'Handwoven Banarasi, Chanderi, Maheshwari, Kota and Ajrakh sarees — from everyday cottons to occasion silks, sourced directly from weaving clusters.',
+    Suits:
+      'Unstitched three-piece Maheshwari cotton silk sets with hand block-printed dupattas, ready for your tailor.',
+    Lehengas:
+      'Discover our curated collection of handcrafted Lehengas, where heritage craftsmanship meets contemporary elegance.',
+    Kurtas:
+      'Tailored luxury kurtas in handspun organic linen and raw silk, designed for clean modern silhouettes.',
+  };
+
+  const resetPageAnd = (fn) => (value) => {
+    fn(value);
+    setCurrentPage(1);
   };
 
   return (
-    <main className="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20">
+    <main className="flex-grow w-full max-w-container-max mx-auto px-margin-mobile py-12 md:py-20">
       {/* Category Header Banner */}
       <header className="mb-14 text-center max-w-2xl mx-auto">
         <span className="font-label-caps text-label-caps text-secondary tracking-widest uppercase block mb-2">
@@ -78,12 +113,13 @@ export const CatalogPage = () => {
       </header>
 
       {/* Category Navigation Tabs */}
-      <div className="flex justify-center gap-6 mb-12 border-b border-outline-variant/30 pb-4 font-label-caps text-label-caps">
-        {['All', 'Lehengas', 'Sarees', 'Kurtas'].map((cat) => (
+      <div className="flex flex-wrap justify-center gap-6 mb-12 border-b border-outline-variant/30 pb-4 font-label-caps text-label-caps">
+        {CATEGORIES.map((cat) => (
           <button
             key={cat}
             onClick={() => {
               setSelectedCategory(cat);
+              setSelectedFabric(null);
               setCurrentPage(1);
             }}
             className={`transition-all duration-200 pb-2 uppercase tracking-wider ${
@@ -100,28 +136,35 @@ export const CatalogPage = () => {
       {/* Main Canvas: Sidebar + Grid */}
       <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
         <FilterSidebar
+          selectedCategory={selectedCategory}
+          selectedFabric={selectedFabric}
+          setSelectedFabric={resetPageAnd(setSelectedFabric)}
           selectedOccasion={selectedOccasion}
-          setSelectedOccasion={setSelectedOccasion}
+          setSelectedOccasion={resetPageAnd(setSelectedOccasion)}
           selectedPriceRange={selectedPriceRange}
-          setSelectedPriceRange={setSelectedPriceRange}
+          setSelectedPriceRange={resetPageAnd(setSelectedPriceRange)}
           selectedColorFilter={selectedColorFilter}
-          setSelectedColorFilter={setSelectedColorFilter}
+          setSelectedColorFilter={resetPageAnd(setSelectedColorFilter)}
         />
 
         <ProductGrid
-          products={filteredProducts}
+          products={pagedProducts}
+          totalCount={filteredProducts.length}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
+          selectedFabric={selectedFabric}
+          setSelectedFabric={resetPageAnd(setSelectedFabric)}
           selectedOccasion={selectedOccasion}
-          setSelectedOccasion={setSelectedOccasion}
+          setSelectedOccasion={resetPageAnd(setSelectedOccasion)}
           selectedPriceRange={selectedPriceRange}
-          setSelectedPriceRange={setSelectedPriceRange}
+          setSelectedPriceRange={resetPageAnd(setSelectedPriceRange)}
           selectedColorFilter={selectedColorFilter}
-          setSelectedColorFilter={setSelectedColorFilter}
+          setSelectedColorFilter={resetPageAnd(setSelectedColorFilter)}
           sortBy={sortBy}
           setSortBy={setSortBy}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
         />
       </div>
     </main>

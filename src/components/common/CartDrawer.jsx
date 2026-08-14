@@ -1,5 +1,6 @@
 import React from 'react';
 import { useShop } from '../../context/ShopContext';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 export const CartDrawer = () => {
   const {
@@ -11,6 +12,8 @@ export const CartDrawer = () => {
     cartTotal,
     navigateTo,
   } = useShop();
+
+  useBodyScrollLock(isCartOpen);
 
   if (!isCartOpen) return null;
 
@@ -87,7 +90,9 @@ export const CartDrawer = () => {
                   <img
                     src={item.product.images.main}
                     alt={item.product.title}
-                    className="w-20 h-24 object-cover rounded-sm bg-surface-container flex-shrink-0"
+                    // self-stretch so the image matches the text column's height
+                    // instead of leaving a gap beneath it on taller rows.
+                    className="w-20 self-stretch min-h-[96px] object-cover rounded-sm bg-surface-container flex-shrink-0"
                   />
                   <div className="flex-1 flex flex-col justify-between">
                     <div>

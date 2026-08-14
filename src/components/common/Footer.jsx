@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useShop } from '../../context/ShopContext';
+import { Wordmark } from './Wordmark';
+import { INFO_PAGES, INFO_PAGE_KEYS } from '../../data/infoPages';
 
 export const Footer = () => {
-  const { navigateTo } = useShop();
+  const { navigateTo, openInfoPage } = useShop();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -16,15 +18,15 @@ export const Footer = () => {
 
   return (
     <footer className="bg-surface-container-lowest border-t border-outline-variant/20 transition-all duration-200 ease-in-out mt-auto">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter py-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter py-16 px-margin-mobile max-w-container-max mx-auto">
         {/* Brand Column */}
         <div className="md:col-span-1 mb-8 md:mb-0">
           <button
             onClick={() => navigateTo('home')}
-            className="kasheeda-script text-primary block mb-4 text-left hover:opacity-90 transition-opacity leading-none"
-            style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)' }}
+            aria-label="Kasheeda — Home"
+            className="block mb-4 text-left hover:opacity-90 transition-opacity"
           >
-            Kasheeda
+            <Wordmark className="h-10 md:h-12 w-auto" />
           </button>
           <p className="font-body-md text-body-md text-on-surface-variant max-w-xs leading-relaxed mb-4">
             Crafting contemporary heritage through timeless hand-woven textiles and minimalist elegance.
@@ -70,34 +72,15 @@ export const Footer = () => {
           <h4 className="font-label-caps text-label-caps text-primary font-semibold mb-2 uppercase tracking-widest">
             Customer Care
           </h4>
-          <a
-            href="#shipping"
-            onClick={(e) => e.preventDefault()}
-            className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
-          >
-            Shipping & Returns
-          </a>
-          <a
-            href="#size-guide"
-            onClick={(e) => e.preventDefault()}
-            className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
-          >
-            Bespoke Size Guide
-          </a>
-          <a
-            href="#contact"
-            onClick={(e) => e.preventDefault()}
-            className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
-          >
-            Boutique Contact
-          </a>
-          <a
-            href="#privacy"
-            onClick={(e) => e.preventDefault()}
-            className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
-          >
-            Privacy Policy
-          </a>
+          {INFO_PAGE_KEYS.map((key) => (
+            <button
+              key={key}
+              onClick={() => openInfoPage(key)}
+              className="text-left font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
+            >
+              {INFO_PAGES[key].label}
+            </button>
+          ))}
         </div>
 
         {/* Newsletter Subscription */}
