@@ -17,6 +17,7 @@ export const ProductDetailPage = () => {
 
   const product = selectedProduct || PRODUCTS[0];
   const [selectedColor, setSelectedColor] = useState(product.color);
+  const [copied, setCopied] = useState(false);
 
   // This page stays mounted when navigating product -> product, so state that
   // was seeded from the old product has to be re-synced.
@@ -33,6 +34,21 @@ export const ProductDetailPage = () => {
       product.priceFormatted
     }%0A%0APlease assist me with custom sizing and order confirmation.`;
     window.open(whatsappLink(message), '_blank', 'noopener,noreferrer');
+  };
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: product.title, text: product.description, url });
+        return;
+      }
+      await navigator.clipboard.writeText(`${product.title} — ${url}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // User dismissed the share sheet, or the clipboard was blocked. Nothing to do.
+    }
   };
 
   // Prefer pieces in the same fabric, then the same category, then anything.
@@ -151,6 +167,17 @@ export const ProductDetailPage = () => {
                 {isLiked ? 'favorite' : 'favorite_border'}
               </span>
               {isLiked ? 'SAVED TO WISHLIST' : 'SAVE TO WISHLIST'}
+            </button>
+
+            {/* Share Button */}
+            <button
+              onClick={handleShare}
+              className="w-full py-3 px-6 border border-outline text-primary hover:bg-surface-container-low transition-colors font-label-caps text-label-caps tracking-widest uppercase rounded flex items-center justify-center gap-2"
+            >
+              <span className="material-symbols-outlined text-[18px]">
+                {copied ? 'check' : 'share'}
+              </span>
+              {copied ? 'LINK COPIED' : 'SHARE'}
             </button>
           </div>
 

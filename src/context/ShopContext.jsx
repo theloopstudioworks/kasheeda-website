@@ -1,16 +1,18 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { PRODUCTS } from '../data/products';
+import { pathFor, stateFromPath } from '../routes';
 
 const ShopContext = createContext();
 
 export const ShopProvider = ({ children }) => {
-  const [activePage, setActivePage] = useState('home');
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const landed = stateFromPath(window.location.pathname);
+  const [activePage, setActivePage] = useState(landed.page);
+  const [selectedCategory, setSelectedCategory] = useState(landed.category || 'All');
   const [selectedFabric, setSelectedFabric] = useState(null);
-  const [infoPageKey, setInfoPageKey] = useState('shipping');
-  const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[0]); // default to first product
+  const [infoPageKey, setInfoPageKey] = useState(landed.infoKey || 'shipping');
+  const [selectedProduct, setSelectedProduct] = useState(landed.product || PRODUCTS[0]);
   const [cart, setCart] = useState([]);
-  const [wishlist, setWishlist] = useState(['banarasi-silk-saree']);
+  const [wishlist, setWishlist] = useState([]);
   
   // UI states
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -19,6 +21,10 @@ export const ShopProvider = ({ children }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
 
+  const pushPath = (path) => {
+    if (path !== window.location.pathname) window.history.pushState({}, '', path);
+  };
+
   // `fabric` lets a link jump straight into a pre-filtered catalog view,
   // e.g. clicking "Chiffon" on a product page.
   const navigateTo = (page, category = 'All', product = null, fabric = null) => {
@@ -26,13 +32,42 @@ export const ShopProvider = ({ children }) => {
     if (category) setSelectedCategory(category);
     if (product) setSelectedProduct(product);
     setSelectedFabric(fabric);
+    pushPath(pathFor(page, { category, product: product || selectedProduct }));
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Back/forward must move between a shared link and the rest of the site.
+  useEffect(() => {
+    // An unknown URL (/sameer) renders home, so put the address bar back at /.
+    const normalisePath = () => {
+      const path = window.location.pathname;
+      if (path !== '/' && stateFromPath(path).page === 'home')
+        window.history.replaceState({}, '', '/');
+    };
+    normalisePath();
+
+    const onPop = () => {
+      normalisePath();
+      const next = stateFromPath(window.location.pathname);
+      setActivePage(next.page);
+      setSelectedCategory(next.category || 'All');
+      if (next.product) setSelectedProduct(next.product);
+      if (next.infoKey) setInfoPageKey(next.infoKey);
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  const selectCategory = (category) => {
+    setSelectedCategory(category);
+    pushPath(pathFor('catalog', { category }));
   };
 
   // Opens one of the Customer Care pages (see src/data/infoPages.js).
   const openInfoPage = (key) => {
     setInfoPageKey(key);
     setActivePage('info');
+    pushPath(pathFor('info', { infoKey: key }));
     setIsMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -116,7 +151,7 @@ export const ShopProvider = ({ children }) => {
         cartTotal,
         navigateTo,
         openInfoPage,
-        setSelectedCategory,
+        setSelectedCategory: selectCategory,
         setSelectedFabric,
         setSelectedProduct,
         addToCart,

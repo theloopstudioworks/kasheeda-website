@@ -17,7 +17,7 @@
 export const PRODUCTS = [
   // ── SAREES ─────────────────────────────────────────────────────────────────
   {
-    id: "khaddi-chiffon-banarasi-7499",
+    id: "khaddi-chiffon-banarasi",
     title: "Crimson Khaddi Chiffon Banarasi Saree",
     category: "Sarees",
     fabric: "Khaddi Chiffon Banarasi",
@@ -39,7 +39,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "green-mango-silk-5500",
+    id: "green-mango-silk",
     title: "Royal Blue Green Mango Silk Saree",
     category: "Sarees",
     fabric: "Green Mango Silk",
@@ -61,7 +61,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "chiniya-silk-5500",
+    id: "chiniya-silk",
     title: "Red Lotus Chiniya Silk Saree",
     category: "Sarees",
     fabric: "Chiniya Silk",
@@ -83,7 +83,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "khaddi-chiffon-banarasi-7499-2",
+    id: "khaddi-chiffon-banarasi-2",
     title: "Magenta Khaddi Chiffon Banarasi Saree",
     category: "Sarees",
     fabric: "Khaddi Chiffon Banarasi",
@@ -105,7 +105,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "khaddi-chiffon-banarasi-6999",
+    id: "khaddi-chiffon-banarasi-3",
     title: "Orange & Rani Khaddi Chiffon Banarasi Saree",
     category: "Sarees",
     fabric: "Khaddi Chiffon Banarasi",
@@ -127,7 +127,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "khaddi-chiffon-banarasi-6999-2",
+    id: "khaddi-chiffon-banarasi-4",
     title: "Rani Pink & Peacock Khaddi Chiffon Banarasi Saree",
     category: "Sarees",
     fabric: "Khaddi Chiffon Banarasi",
@@ -149,7 +149,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "khaddi-chiffon-banarasi-6999-3",
+    id: "khaddi-chiffon-banarasi-5",
     title: "Mehendi & Rani Khaddi Chiffon Banarasi Saree",
     category: "Sarees",
     fabric: "Khaddi Chiffon Banarasi",
@@ -171,7 +171,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "khaddi-chiffon-banarasi-6999-4",
+    id: "khaddi-chiffon-banarasi-6",
     title: "Red & Ivory Khaddi Chiffon Banarasi Saree",
     category: "Sarees",
     fabric: "Khaddi Chiffon Banarasi",
@@ -193,7 +193,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "khaddi-chiffon-banarasi-6999-5",
+    id: "khaddi-chiffon-banarasi-7",
     title: "Red & Royal Blue Khaddi Chiffon Banarasi Saree",
     category: "Sarees",
     fabric: "Khaddi Chiffon Banarasi",
@@ -215,7 +215,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "khaddi-chiffon-banarasi-6999-6",
+    id: "khaddi-chiffon-banarasi-8",
     title: "Haldi Ombré Khaddi Chiffon Banarasi Saree",
     category: "Sarees",
     fabric: "Khaddi Chiffon Banarasi",
@@ -237,7 +237,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "chiffon-7000",
+    id: "chiffon",
     title: "Rani Ombré Rose Chiffon Saree",
     category: "Sarees",
     fabric: "Chiffon",
@@ -259,7 +259,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "matka-silk-7000",
+    id: "matka-silk",
     title: "Rust Gold Tissue Matka Silk Saree",
     category: "Sarees",
     fabric: "Matka Silk",
@@ -281,7 +281,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "tissue-linen-silk-6000",
+    id: "tissue-linen-silk",
     title: "Dusty Peach Sitara Tissue Linen Silk Saree",
     category: "Sarees",
     fabric: "Tissue Linen Silk",
@@ -303,7 +303,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "ho-silk-5500",
+    id: "ho-silk",
     title: "Silver Grey Zardozi Silk Saree",
     category: "Sarees",
     fabric: "H.O. Silk",
@@ -325,7 +325,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "green-mango-silk-5500-2",
+    id: "green-mango-silk-2",
     title: "Olive Gold Green Mango Silk Saree",
     category: "Sarees",
     fabric: "Green Mango Silk",
@@ -347,7 +347,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "gajji-silk-5000",
+    id: "gajji-silk",
     title: "Ajrakh Mandala Gajji Silk Saree",
     category: "Sarees",
     fabric: "Gajji Silk",
@@ -369,7 +369,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "chiffon-5000",
+    id: "chiffon-2",
     title: "Terracotta Kundan Chiffon Saree",
     category: "Sarees",
     fabric: "Chiffon",
@@ -391,7 +391,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "chiffon-5000-2",
+    id: "chiffon-3",
     title: "Marigold Silver-Leaf Chiffon Saree",
     category: "Sarees",
     fabric: "Chiffon",
@@ -413,7 +413,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "chiffon-5000-3",
+    id: "chiffon-4",
     title: "Scarlet Bloom Chiffon Saree",
     category: "Sarees",
     fabric: "Chiffon",
@@ -435,7 +435,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "chiffon-5000-4",
+    id: "chiffon-5",
     title: "Ice Blue Peacock Chiffon Saree",
     category: "Sarees",
     fabric: "Chiffon",
@@ -457,7 +457,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "chiffon-4500",
+    id: "chiffon-6",
     title: "Dusty Rose Gota Chiffon Saree",
     category: "Sarees",
     fabric: "Chiffon",
@@ -479,7 +479,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "dola-silk-4500",
+    id: "dola-silk",
     title: "Black Gajraj Dola Silk Saree",
     category: "Sarees",
     fabric: "Dola Silk",
@@ -501,7 +501,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "modal-silk-4500",
+    id: "modal-silk",
     title: "Madder Red Ajrakh Modal Silk Saree",
     category: "Sarees",
     fabric: "Modal Silk",
@@ -523,7 +523,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "modal-silk-4500-2",
+    id: "modal-silk-2",
     title: "Black Mahi Ajrakh Modal Silk Saree",
     category: "Sarees",
     fabric: "Modal Silk",
@@ -545,7 +545,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "modal-silk-4500-3",
+    id: "modal-silk-3",
     title: "Deep Teal Mandala Modal Silk Saree",
     category: "Sarees",
     fabric: "Modal Silk",
@@ -567,7 +567,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "modal-silk-4500-4",
+    id: "modal-silk-4",
     title: "Indigo Sitara Ajrakh Modal Silk Saree",
     category: "Sarees",
     fabric: "Modal Silk",
@@ -589,7 +589,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "modal-silk-4000",
+    id: "modal-silk-5",
     title: "Charcoal Ajrakh Border Modal Silk Saree",
     category: "Sarees",
     fabric: "Modal Silk",
@@ -611,7 +611,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "chiniya-silk-3999",
+    id: "chiniya-silk-2",
     title: "Wine Plum Chiniya Silk Saree",
     category: "Sarees",
     fabric: "Chiniya Silk",
@@ -633,7 +633,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "chiniya-silk-3999-2",
+    id: "chiniya-silk-3",
     title: "Burnt Orange Chiniya Silk Saree",
     category: "Sarees",
     fabric: "Chiniya Silk",
@@ -655,7 +655,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "chiniya-silk-3999-3",
+    id: "chiniya-silk-4",
     title: "Maroon Antique Zari Chiniya Silk Saree",
     category: "Sarees",
     fabric: "Chiniya Silk",
@@ -677,7 +677,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "ho-silk-3800",
+    id: "ho-silk-2",
     title: "Marigold Kundan Silk Saree",
     category: "Sarees",
     fabric: "H.O. Silk",
@@ -699,7 +699,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "kupada-3800",
+    id: "kupada",
     title: "Marigold Gota Kupada Silk Saree",
     category: "Sarees",
     fabric: "Kupada Silk",
@@ -721,7 +721,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "banarasi-cotton-2499",
+    id: "banarasi-cotton",
     title: "Parrot Green Banarasi Cotton Saree",
     category: "Sarees",
     fabric: "Banarasi Cotton",
@@ -743,7 +743,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "banarasi-cotton-2499-2",
+    id: "banarasi-cotton-2",
     title: "Coral Rose Banarasi Cotton Saree",
     category: "Sarees",
     fabric: "Banarasi Cotton",
@@ -765,7 +765,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "cotton-jamdani-2499",
+    id: "cotton-jamdani",
     title: "Black Jamdani Cotton Saree",
     category: "Sarees",
     fabric: "Cotton Jamdani",
@@ -787,7 +787,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "maheshwari-cotton-2499",
+    id: "maheshwari-cotton",
     title: "Black & Red Maheshwari Cotton Saree",
     category: "Sarees",
     fabric: "Maheshwari Cotton",
@@ -809,7 +809,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "mangalgiri-2499",
+    id: "mangalgiri",
     title: "Taupe & Rani Mangalgiri Cotton Saree",
     category: "Sarees",
     fabric: "Mangalgiri Cotton",
@@ -831,7 +831,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "maheshwari-cotton-2399",
+    id: "maheshwari-cotton-2",
     title: "Ivory & Maroon Stripe Maheshwari Saree",
     category: "Sarees",
     fabric: "Maheshwari Cotton",
@@ -853,7 +853,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "maheshwari-cotton-2399-2",
+    id: "maheshwari-cotton-3",
     title: "Red Lotus Maheshwari Cotton Saree",
     category: "Sarees",
     fabric: "Maheshwari Cotton",
@@ -875,7 +875,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "chanderi-cotton-2199",
+    id: "chanderi-cotton",
     title: "Indigo Dabu Chanderi Cotton Saree",
     category: "Sarees",
     fabric: "Chanderi Cotton",
@@ -897,7 +897,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "tissue-linen-2100",
+    id: "tissue-linen",
     title: "Bronze Tissue Linen Saree",
     category: "Sarees",
     fabric: "Tissue Linen",
@@ -919,7 +919,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "kota-doria-1900",
+    id: "kota-doria",
     title: "Rust Block Print Kota Doria Saree",
     category: "Sarees",
     fabric: "Kota Doria",
@@ -941,7 +941,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "kota-doria-1900-2",
+    id: "kota-doria-2",
     title: "Teal Leaf Kota Doria Saree",
     category: "Sarees",
     fabric: "Kota Doria",
@@ -963,7 +963,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "kota-doria-1899",
+    id: "kota-doria-3",
     title: "Mustard Kalamkari Kota Doria Saree",
     category: "Sarees",
     fabric: "Kota Doria",
@@ -985,7 +985,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "cotton-saree-1800",
+    id: "cotton-saree",
     title: "Teal & Navy Colourblock Cotton Saree",
     category: "Sarees",
     fabric: "Handloom Cotton",
@@ -1007,7 +1007,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "mul-cotton-1499",
+    id: "mul-cotton",
     title: "Black Gold Stripe Mul Cotton Saree",
     category: "Sarees",
     fabric: "Mul Cotton",
@@ -1029,7 +1029,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "cotton-saree-999",
+    id: "cotton-saree-2",
     title: "Teal Ajrakh Handloom Cotton Saree",
     category: "Sarees",
     fabric: "Handloom Cotton",
@@ -1051,7 +1051,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "cotton-saree-999-2",
+    id: "cotton-saree-3",
     title: "Classic Black Handloom Cotton Saree",
     category: "Sarees",
     fabric: "Handloom Cotton",
@@ -1075,7 +1075,7 @@ export const PRODUCTS = [
 
   // ── SUITS (unstitched 3-piece sets) ────────────────────────────────────────
   {
-    id: "maheshwari-cotton-silk-lilac-2599",
+    id: "maheshwari-cotton-silk-lilac",
     title: "Lilac Mughal Buta Maheshwari Suit Set",
     category: "Suits",
     fabric: "Maheshwari Cotton Silk",
@@ -1097,7 +1097,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "maheshwari-cotton-silk-blue-marigold-2599",
+    id: "maheshwari-cotton-silk-blue-marigold",
     title: "Blue Marigold Maheshwari Suit Set",
     category: "Suits",
     fabric: "Maheshwari Cotton Silk",
@@ -1119,7 +1119,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "maheshwari-cotton-silk-powder-blue-2599",
+    id: "maheshwari-cotton-silk-powder-blue",
     title: "Powder Blue Floral Maheshwari Suit Set",
     category: "Suits",
     fabric: "Maheshwari Cotton Silk",
@@ -1141,7 +1141,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "maheshwari-cotton-silk-turquoise-2599",
+    id: "maheshwari-cotton-silk-turquoise",
     title: "Turquoise Cypress Maheshwari Suit Set",
     category: "Suits",
     fabric: "Maheshwari Cotton Silk",
@@ -1163,7 +1163,7 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "maheshwari-cotton-silk-indigo-leaf-2599",
+    id: "maheshwari-cotton-silk-indigo-leaf",
     title: "Indigo Leaf Maheshwari Suit Set",
     category: "Suits",
     fabric: "Maheshwari Cotton Silk",
@@ -1182,39 +1182,6 @@ export const PRODUCTS = [
       "Slate blue and gold zari dupatta border",
       "Approx. 2.5m top, 2.5m bottom, 2.25m dupatta",
       "Gentle hand wash separately for first wash"
-    ]
-  },
-
-  // ── LEHENGAS & KURTAS (placeholder catalog — images are hosted externally) ──
-  {
-    id: "banarasi-silk-saree",
-    title: "Banarasi Hand-Woven Silk Saree",
-    category: "Sarees",
-    fabric: "Mulberry Silk",
-    price: 145000,
-    priceFormatted: "₹1,45,000",
-    color: "Deep Maroon",
-    colorHex: "#570013",
-    colorOptions: [
-      { name: "Deep Maroon", hex: "#570013" },
-      { name: "Ivory Cream", hex: "#f4e7d3" }
-    ],
-    occasion: "Bridal",
-    isNew: false,
-    description:
-      "A masterpiece of tactile luxury. This saree is hand-woven by master artisans over 120 days, featuring intricate Kadwa weaving technique. The deep, lustrous raw silk serves as a canvas for delicate, antique gold zari work that catches the light with quiet sophistication.",
-    images: {
-      main: "https://lh3.googleusercontent.com/aida-public/AB6AXuB_Y1sjJKkXM11YjoqbWlw5Zm4ctHpvE810gbWWb-_XlAg5bWfvaBfUlckGxiqqXJTaZIwvbTvT6gxlFbBxDPm36YC2zG4CJ3JJTcuqkV-2w2mZd2uqJHlcA5jodYDzbLicYq0JYgnDlDwzViAgWw3qwmCwApjFvWPsaSNTxQC_m7433jGPptaXzvpbs5ihRAHobpx5SZDIHpN84ONPuhm_1ApNqrJ5lqC6mD7YS-nICMzxrFcyPBKN68G3y4YvKJPwoKaFp9rucBTf",
-      detail: "https://lh3.googleusercontent.com/aida-public/AB6AXuDSANeELjuU1rBXKpNAwgfZ4bkzQUGY6SMkZLaZlp-S2jbGZ34euII7kSApTjOsjlLUC0LzUBDvWWGls0pDtpQYhjSc3NoFVbDWk44DfgTFcI81ZBXJ61FUQ_R33v8bD52cq6guthY5lCjBW39sbxJniTOgepii55PPZoW9pY5u3KYt-B5uQwL1gP3dPorxXFB6dbby8NOJewif91glU--72IBHD6XutS8SNpWRzX8ntzS2mk74VFV2iF8jI1l0371RxcLUb7PwMMCB",
-      drape: "https://lh3.googleusercontent.com/aida-public/AB6AXuD-4KD0gTg3gT7pEuunc10lyZi42f9oVqsgci-0X1_oPlZ-1J_cV9KJ1OuDkxkBkcAlPHpYqAG7aitHzYETK4cg1YTqQKylHNkgb7PQwbJftrSL6HtHmKGNGrWChtPjwnubbiHOnDwNIgGHRhk-HZc2eY8J_i8Sd6aelekVnAS3Jt744OYI1gqlYm8dUZesTooIyV3qyOFAMG6X22630Niky0H4nSLXmuZp18UmziihznXYBZSrU91N_-LeGGxmFXxapCgTfCLEk4iM",
-      full: "https://lh3.googleusercontent.com/aida-public/AB6AXuBbAcQ_-PZXv3UURI1d4DA2aCGLDcZD6a82t8LRHjb6f08Lm9wcIkJucZXIN2Kr8aMLsDdISImgwe_mpqoVAwpP9ysM2V9kiiBU0imPopLHew2Wn1sUCNklTHEYN7-mPzDIJ-joSYfOmDHnhtKKQq1cabywxbqxyHNPHzIMeqgnDvmkeY3i9CiBlyaiZrzLyuItkBLk8RTRr6LI6F89271c0TUCSI5sWNldHxp2IlTr5LyzT_Dk3-PfUw7ZpJ1v9EawhTYQ57_0dlG_"
-    },
-    details: [
-      "100% Pure Mulberry Silk",
-      "Handcrafted Antique Gold Zari embroidery",
-      "Includes unstitched blouse piece (80cm)",
-      "Dry clean only",
-      "Handmade in Banarasi, India"
     ]
   },
 ];
