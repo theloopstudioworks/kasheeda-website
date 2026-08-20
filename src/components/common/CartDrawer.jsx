@@ -83,7 +83,13 @@ export const CartDrawer = () => {
                 </button>
               </div>
             ) : (
-              cart.map((item) => (
+              cart.map((item) => {
+                const openDetail = () => {
+                  setIsCartOpen(false);
+                  navigateTo('detail', item.product.category, item.product);
+                };
+
+                return (
                 <div
                   key={`${item.product.id}-${item.color}`}
                   className="flex gap-4 border-b border-outline-variant/20 pb-4"
@@ -91,15 +97,18 @@ export const CartDrawer = () => {
                   <img
                     src={item.product.images.main}
                     alt={item.product.title}
+                    onClick={openDetail}
                     // self-stretch so the image matches the text column's height
                     // instead of leaving a gap beneath it on taller rows.
-                    className="w-20 self-stretch min-h-[96px] object-cover rounded-sm bg-surface-container flex-shrink-0"
+                    className="w-20 self-stretch min-h-[96px] object-cover rounded-sm bg-surface-container flex-shrink-0 cursor-pointer"
                   />
                   <div className="flex-1 flex flex-col justify-between">
                     <div>
-                      <h4 className="font-headline-sm text-base text-primary line-clamp-1">
-                        {item.product.title}
-                      </h4>
+                      <button onClick={openDetail} className="text-left w-full">
+                        <h4 className="font-headline-sm text-base text-primary line-clamp-1 hover:opacity-80 transition-opacity">
+                          {item.product.title}
+                        </h4>
+                      </button>
                       <p className="font-label-caps text-xs text-on-surface-variant mt-1">
                         Color: {item.color}
                       </p>
@@ -142,7 +151,8 @@ export const CartDrawer = () => {
                     </div>
                   </div>
                 </div>
-              ))
+                );
+              })
             )}
           </div>
 

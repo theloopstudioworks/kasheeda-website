@@ -32,7 +32,7 @@ export const ProductCard = ({ product }) => {
             toggleWishlist(product.id);
           }}
           aria-label="Toggle Wishlist"
-          className="absolute top-4 left-4 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-surface"
+          className="absolute z-10 top-4 left-4 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-surface"
         >
           <span className={`material-symbols-outlined text-sm ${isLiked ? 'fill-current text-primary' : ''}`}>
             {isLiked ? 'favorite' : 'favorite_border'}
