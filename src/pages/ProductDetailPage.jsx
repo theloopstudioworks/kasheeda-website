@@ -25,12 +25,16 @@ export const ProductDetailPage = () => {
     setSelectedColor(product.color);
   }, [product]);
 
+  const variant = product.colorOptions?.find((o) => o.name === selectedColor);
+  const title = variant?.title ?? product.title;
+  const images = variant?.images ?? product.images;
+
   const isLiked = isInWishlist(product.id);
 
   const handleWhatsAppOrder = () => {
-    const message = `Hello Kasheeda Team,%0A%0AI would like to inquire about/order the following garment:%0A• *${
-      product.title
-    }*%0A• Color: ${selectedColor || product.color}%0A• Price: ${
+    const message = `Hello Kasheeda Team,%0A%0AI would like to inquire about/order the following garment:%0A• *${title}*%0A• Color: ${
+      selectedColor || product.color
+    }%0A• Price: ${
       product.priceFormatted
     }%0A%0APlease assist me with custom sizing and order confirmation.`;
     window.open(whatsappLink(message), '_blank', 'noopener,noreferrer');
@@ -40,10 +44,10 @@ export const ProductDetailPage = () => {
     const url = window.location.href;
     try {
       if (navigator.share) {
-        await navigator.share({ title: product.title, text: product.description, url });
+        await navigator.share({ title, text: product.description, url });
         return;
       }
-      await navigator.clipboard.writeText(`${product.title} — ${url}`);
+      await navigator.clipboard.writeText(`${title} — ${url}`);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -62,7 +66,7 @@ export const ProductDetailPage = () => {
     <main className="max-w-container-max mx-auto px-margin-mobile py-12 md:py-20">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-16">
         {/* Left Column: Image Gallery */}
-        <ProductGallery images={product.images} title={product.title} />
+        <ProductGallery images={images} title={title} />
 
         {/* Right Column: Sticky Product Details */}
         <section className="lg:col-span-5 flex flex-col gap-8 lg:sticky lg:top-28 h-fit pt-4 lg:pt-0">
@@ -75,13 +79,13 @@ export const ProductDetailPage = () => {
               {product.category}
             </button>
             <span>/</span>
-            <span className="text-primary font-semibold">{product.title}</span>
+            <span className="text-primary font-semibold">{title}</span>
           </nav>
 
           {/* Header & Price */}
           <div className="flex flex-col gap-2">
             <h1 className="font-headline-md text-headline-md text-on-background">
-              {product.title}
+              {title}
             </h1>
             {product.fabric && (
               <button
@@ -163,8 +167,12 @@ export const ProductDetailPage = () => {
               onClick={() => toggleWishlist(product.id)}
               className="w-full py-3 px-6 border border-outline text-primary hover:bg-surface-container-low transition-colors font-label-caps text-label-caps tracking-widest uppercase rounded flex items-center justify-center gap-2"
             >
-              <span className="material-symbols-outlined text-[18px]">
-                {isLiked ? 'favorite' : 'favorite_border'}
+              <span
+                className={`material-symbols-outlined text-[18px] ${
+                  isLiked ? 'filled' : ''
+                }`}
+              >
+                favorite
               </span>
               {isLiked ? 'SAVED TO WISHLIST' : 'SAVE TO WISHLIST'}
             </button>

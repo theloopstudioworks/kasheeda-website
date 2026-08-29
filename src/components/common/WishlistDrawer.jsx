@@ -69,7 +69,7 @@ export const WishlistDrawer = () => {
             {savedProducts.length === 0 ? (
               <div className="text-center py-16 text-on-surface-variant flex flex-col items-center">
                 <span className="material-symbols-outlined text-5xl mb-4 opacity-40">
-                  favorite_border
+                  favorite
                 </span>
                 <p className="font-headline-sm text-lg text-primary mb-2">
                   Nothing saved yet
