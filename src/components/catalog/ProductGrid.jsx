@@ -124,7 +124,11 @@ export const ProductGrid = ({
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-12">
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              color={selectedColorFilter}
+            />
           ))}
         </div>
       )}

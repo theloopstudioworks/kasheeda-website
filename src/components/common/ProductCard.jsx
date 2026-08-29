@@ -4,12 +4,22 @@ import { imageUrls } from '../../data/products';
 
 const SLIDE_MS = 6000;
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ product, color }) => {
   const { navigateTo, toggleWishlist, isInWishlist, setQuickViewProduct } = useShop();
 
   const isLiked = isInWishlist(product.id);
 
-  const urls = useMemo(() => imageUrls(product.images), [product.images]);
+  const variant = color && product.colorOptions?.find((o) => o.name === color);
+  const shown = variant
+    ? {
+        ...product,
+        color,
+        title: variant.title ?? product.title,
+        images: variant.images ?? product.images,
+      }
+    : product;
+
+  const urls = useMemo(() => imageUrls(shown.images), [shown.images]);
   const track = urls.length > 1 ? [...urls, urls[0]] : urls;
   const [slide, setSlide] = useState(0);
   const [sliding, setSliding] = useState(true);
@@ -43,7 +53,7 @@ export const ProductCard = ({ product }) => {
       <div className="relative aspect-[3/4] overflow-hidden bg-surface-container mb-4 rounded-sm">
         {/* Product Image(s) — a track that slides one frame at a time */}
         <div
-          onClick={() => navigateTo('detail', product.category, product)}
+          onClick={() => navigateTo('detail', product.category, shown)}
           onTransitionEnd={(e) => {
             // The hover scale on each image bubbles up here too — ignore it.
             if (e.target === e.currentTarget && slide === track.length - 1) {
@@ -60,7 +70,7 @@ export const ProductCard = ({ product }) => {
             <img
               key={i}
               src={url}
-              alt={product.title}
+              alt={shown.title}
               aria-hidden={i !== slide}
               className="w-full h-full shrink-0 object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
@@ -99,7 +109,7 @@ export const ProductCard = ({ product }) => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              setQuickViewProduct(product);
+              setQuickViewProduct(shown);
             }}
             className="bg-surface/90 text-primary px-6 py-2 border border-secondary rounded font-label-caps text-label-caps hover:bg-primary hover:text-on-primary hover:border-primary transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 shadow-sm"
           >
@@ -111,14 +121,14 @@ export const ProductCard = ({ product }) => {
       {/* Card Info */}
       <div
         className="text-center px-2 flex flex-col flex-grow justify-between"
-        onClick={() => navigateTo('detail', product.category, product)}
+        onClick={() => navigateTo('detail', product.category, shown)}
       >
         <div>
           <span className="font-label-caps text-[10px] text-on-surface-variant/80 uppercase tracking-widest block mb-1">
             {product.category}
           </span>
           <h3 className="font-headline-sm text-headline-sm text-primary mb-1 line-clamp-1 group-hover:text-secondary transition-colors">
-            {product.title}
+            {shown.title}
           </h3>
         </div>
         <p className="font-body-md text-body-md text-on-surface-variant font-medium mt-1">
