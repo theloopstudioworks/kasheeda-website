@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useShop } from '../context/ShopContext';
-import { PRODUCTS, CATEGORIES } from '../data/products';
+import { PRODUCTS, CATEGORIES, productColors } from '../data/products';
 import { FilterSidebar } from '../components/catalog/FilterSidebar';
 import { ProductGrid } from '../components/catalog/ProductGrid';
 
@@ -41,7 +41,10 @@ export const CatalogPage = () => {
         }
       }
       // Color filter
-      if (selectedColorFilter && product.color !== selectedColorFilter) {
+      if (
+        selectedColorFilter &&
+        !productColors(product).some((c) => c.name === selectedColorFilter)
+      ) {
         return false;
       }
       return true;

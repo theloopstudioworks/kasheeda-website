@@ -4,7 +4,9 @@
 // To add a product, copy any object below and change the fields.
 // Required: id, title, category, fabric, price, priceFormatted, color, colorHex,
 //           occasion, isNew, description, images.main, details
-// Optional: colorOptions, images.detail / .drape / .full
+// Optional: images.detail / .drape / .full,
+//           colorOptions -> [{ name, hex, title?, images? }]; the entries after
+//           the first may carry their own title/images for that colour variant
 //
 // id       -> must be unique (used as React key, cart identity, wishlist id)
 // category -> must be one of CATEGORIES below (except "All")
@@ -29,7 +31,11 @@ export const PRODUCTS = [
     isNew: true,
     description:
       "A true Banarasi khaddi georgette in deep crimson, woven on the handloom with fine silver zari buta scattered across the body. The wide floral zari border and pallu give it the weight of an occasion saree while the khaddi chiffon keeps the drape feather-soft.",
-    images: { main: "/sarees/khaddi-chiffon-banarasi-7499.png" },
+    images: {
+      main: "/sarees/crimson-khaddi-chiffon-banarasi-7499-1.jpg",
+      detail: "/sarees/crimson-khaddi-chiffon-banarasi-7499-2.jpg",
+      drape: "/sarees/crimson-khaddi-chiffon-banarasi-7499-3.jpg"
+    },
     details: [
       "Pure Khaddi Georgette (Banarasi handloom)",
       "Real silver zari buta and broad border weave",
@@ -95,7 +101,11 @@ export const PRODUCTS = [
     isNew: true,
     description:
       "A rich magenta khaddi georgette lit up by silver zari paisley along the border and pallu. The colour sits between rani pink and purple, which makes it unusually easy to pair with both silver and gold jewellery.",
-    images: { main: "/sarees/khaddi-chiffon-banarasi-7499-2.png" },
+    images: {
+      main: "/sarees/magenta-khaddi-chiffon-banarasi-7499-1.jpg",
+      detail: "/sarees/magenta-khaddi-chiffon-banarasi-7499-2.jpg",
+      drape: "/sarees/magenta-khaddi-chiffon-banarasi-7499-3.jpg"
+    },
     details: [
       "Pure Khaddi Georgette (Banarasi handloom)",
       "Silver zari paisley border and pallu",
@@ -117,7 +127,11 @@ export const PRODUCTS = [
     isNew: true,
     description:
       "A bright sunset orange body running into a deep rani pink pallu, joined by fine silver zari floral buta. The two-tone Banarasi khaddi is a haldi and mehendi favourite because the colour shift photographs beautifully in daylight.",
-    images: { main: "/sarees/khaddi-chiffon-banarasi-6999.png" },
+    images: {
+      main: "/sarees/orange-rani-khaddi-chiffon-banarasi-6999-1.jpg",
+      detail: "/sarees/orange-rani-khaddi-chiffon-banarasi-6999-2.jpg",
+      drape: "/sarees/orange-rani-khaddi-chiffon-banarasi-6999-3.jpg"
+    },
     details: [
       "Pure Khaddi Georgette (Banarasi handloom)",
       "Two-tone orange body with rani pink pallu",
@@ -314,8 +328,25 @@ export const PRODUCTS = [
     occasion: "Wedding",
     isNew: false,
     description:
-      "A liquid silver-grey tissue silk with a trailing vine of gold and ivory zardozi flowers worked along the border. Understated in colour, generous in handwork — a good cocktail or reception saree.",
-    images: { main: "/sarees/ho-silk-5500.png" },
+      "A liquid tissue silk with a trailing vine of gold and ivory zardozi flowers worked along the border. Available in silver grey and ivory beige — understated in colour, generous in handwork, a good cocktail or reception saree.",
+    colorOptions: [
+      { name: "Silver Grey", hex: "#949a9c" },
+      {
+        name: "Ivory Beige",
+        hex: "#e6d4b8",
+        title: "Ivory Beige Zardozi Silk Saree",
+        images: {
+          main: "/sarees/ivory-beige-zardozi-silk-5500-1.jpg",
+          detail: "/sarees/ivory-beige-zardozi-silk-5500-2.jpg",
+          drape: "/sarees/ivory-beige-zardozi-silk-5500-3.jpg"
+        }
+      }
+    ],
+    images: {
+      main: "/sarees/silver-grey-zardozi-silk-5500-1.jpg",
+      detail: "/sarees/silver-grey-zardozi-silk-5500-2.jpg",
+      drape: "/sarees/silver-grey-zardozi-silk-5500-3.jpg"
+    },
     details: [
       "Lustrous tissue silk",
       "Hand zardozi floral vine with sequin fill",
@@ -359,7 +390,11 @@ export const PRODUCTS = [
     isNew: false,
     description:
       "Glossy gajji silk hand block-printed in madder red with large ajrakh mandalas across the body and a dense geometric border. Natural-dye ajrakh on satin-finish silk gives an unusual mix of matte print and shine.",
-    images: { main: "/sarees/gajji-silk-5000.png" },
+    images: {
+      main: "/sarees/ajrakh-mandala-gajji-silk-5000-1.jpg",
+      detail: "/sarees/ajrakh-mandala-gajji-silk-5000-2.jpg",
+      drape: "/sarees/ajrakh-mandala-gajji-silk-5000-3.jpg"
+    },
     details: [
       "Pure Gajji silk with satin finish",
       "Hand block-printed natural-dye Ajrakh",
@@ -403,7 +438,11 @@ export const PRODUCTS = [
     isNew: true,
     description:
       "Marigold mustard chiffon dotted with small silver leaf buti and finished with a delicately ruffled edge. Bright without being heavy — a natural pick for daytime pujas and haldi functions.",
-    images: { main: "/sarees/chiffon-5000-2.png" },
+    images: {
+      main: "/sarees/marigold-silver-leaf-chiffon-5000-1.jpg",
+      detail: "/sarees/marigold-silver-leaf-chiffon-5000-2.jpg",
+      drape: "/sarees/marigold-silver-leaf-chiffon-5000-3.jpg"
+    },
     details: [
       "Pure chiffon",
       "Hand-embroidered silver leaf buti",
@@ -447,7 +486,12 @@ export const PRODUCTS = [
     isNew: true,
     description:
       "A pale ice-blue chiffon with a single hand-worked gold and enamel peacock motif on the pallu and tiny gold buti on the body. Minimal by design — the kind of saree that works for a morning ceremony or a quiet evening.",
-    images: { main: "/sarees/chiffon-5000-4.png" },
+    images: {
+      main: "/sarees/ice-blue-peacock-chiffon-5000-1.jpg",
+      detail: "/sarees/ice-blue-peacock-chiffon-5000-2.jpg",
+      drape: "/sarees/ice-blue-peacock-chiffon-5000-3.jpg",
+      full: "/sarees/ice-blue-peacock-chiffon-5000-4.jpg"
+    },
     details: [
       "Pure chiffon in pale ice blue",
       "Hand zardozi peacock motif with enamel detail",
@@ -513,7 +557,11 @@ export const PRODUCTS = [
     isNew: false,
     description:
       "Madder red modal silk hand block-printed with tall indigo cypress buta and a fine floral border. Ajrakh on modal is the best of both — natural dye depth with a fluid, cool-to-wear drape.",
-    images: { main: "/sarees/modal-silk-4500.png" },
+    images: {
+      main: "/sarees/madder-red-ajrakh-modal-silk-4500-1.jpg",
+      detail: "/sarees/madder-red-ajrakh-modal-silk-4500-2.jpg",
+      drape: "/sarees/madder-red-ajrakh-modal-silk-4500-3.jpg"
+    },
     details: [
       "Modal silk, natural-dye Ajrakh hand block print",
       "Cypress buta with indigo and madder palette",
@@ -1213,11 +1261,22 @@ export const getFabricsForCategory = (category) => {
 };
 
 /** Colour swatches available in a category, de-duplicated by colour name. */
+/** Main first, then every other photo on the images object, de-duplicated. */
+export const imageUrls = (images) => [
+  ...new Set([images.main, ...Object.values(images)].filter(Boolean)),
+];
+
+/** Every colour a product is offered in — single-colour products have one. */
+export const productColors = (p) =>
+  p.colorOptions ?? [{ name: p.color, hex: p.colorHex }];
+
 export const getColorsForCategory = (category) => {
   const seen = new Map();
   PRODUCTS.filter((p) => category === "All" || p.category === category).forEach(
     (p) => {
-      if (!seen.has(p.color)) seen.set(p.color, { name: p.color, hex: p.colorHex });
+      productColors(p).forEach((c) => {
+        if (!seen.has(c.name)) seen.set(c.name, { name: c.name, hex: c.hex });
+      });
     }
   );
   return [...seen.values()].sort((a, b) => a.name.localeCompare(b.name));

@@ -1,22 +1,72 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useShop } from '../../context/ShopContext';
+import { imageUrls } from '../../data/products';
+
+const SLIDE_MS = 6000;
 
 export const ProductCard = ({ product }) => {
   const { navigateTo, toggleWishlist, isInWishlist, setQuickViewProduct } = useShop();
 
   const isLiked = isInWishlist(product.id);
 
+  const urls = useMemo(() => imageUrls(product.images), [product.images]);
+  const track = urls.length > 1 ? [...urls, urls[0]] : urls;
+  const [slide, setSlide] = useState(0);
+  const [sliding, setSliding] = useState(true);
+
+  useEffect(() => {
+    setSlide(0);
+    if (
+      urls.length < 2 ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      return;
+    }
+    const last = urls.length;
+    const id = setInterval(
+      () => setSlide((i) => Math.min(i + 1, last)),
+      SLIDE_MS
+    );
+    return () => clearInterval(id);
+  }, [urls]);
+
+  useEffect(() => {
+    if (sliding) return;
+    const outer = requestAnimationFrame(() =>
+      requestAnimationFrame(() => setSliding(true))
+    );
+    return () => cancelAnimationFrame(outer);
+  }, [sliding]);
+
   return (
     <article className="group cursor-pointer flex flex-col h-full">
       <div className="relative aspect-[3/4] overflow-hidden bg-surface-container mb-4 rounded-sm">
-        {/* Main Product Image */}
-        <img
-          src={product.images.main}
-          alt={product.title}
+        {/* Product Image(s) — a track that slides one frame at a time */}
+        <div
           onClick={() => navigateTo('detail', product.category, product)}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          loading="lazy"
-        />
+          onTransitionEnd={(e) => {
+            // The hover scale on each image bubbles up here too — ignore it.
+            if (e.target === e.currentTarget && slide === track.length - 1) {
+              setSliding(false);
+              setSlide(0);
+            }
+          }}
+          className={`absolute inset-0 flex ${
+            sliding ? 'transition-transform duration-[1400ms] ease-in-out' : ''
+          }`}
+          style={{ transform: `translateX(-${slide * 100}%)` }}
+        >
+          {track.map((url, i) => (
+            <img
+              key={i}
+              src={url}
+              alt={product.title}
+              aria-hidden={i !== slide}
+              className="w-full h-full shrink-0 object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+          ))}
+        </div>
 
         {/* NEW Badge */}
         {product.isNew && (
@@ -31,11 +81,16 @@ export const ProductCard = ({ product }) => {
             e.stopPropagation();
             toggleWishlist(product.id);
           }}
-          aria-label="Toggle Wishlist"
-          className="absolute z-10 top-4 left-4 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-surface"
+          aria-label={isLiked ? 'Remove from wishlist' : 'Add to wishlist'}
+          aria-pressed={isLiked}
+          className={`absolute z-10 top-4 left-4 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-primary transition-opacity duration-300 hover:bg-surface ${
+            isLiked ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+          }`}
         >
-          <span className={`material-symbols-outlined text-sm ${isLiked ? 'fill-current text-primary' : ''}`}>
-            {isLiked ? 'favorite' : 'favorite_border'}
+          <span
+            className={`material-symbols-outlined text-sm ${isLiked ? 'filled' : ''}`}
+          >
+            favorite
           </span>
         </button>
 

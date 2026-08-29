@@ -16,6 +16,9 @@ export const QuickViewModal = () => {
   if (!quickViewProduct) return null;
 
   const color = selectedColor || quickViewProduct.color;
+  const variant = quickViewProduct.colorOptions?.find((o) => o.name === color);
+  const title = variant?.title ?? quickViewProduct.title;
+  const image = (variant?.images ?? quickViewProduct.images).main;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fadeIn">
@@ -33,8 +36,8 @@ export const QuickViewModal = () => {
         {/* Product Image */}
         <div className="w-full md:w-1/2 aspect-[3/4] bg-surface-container relative overflow-hidden">
           <img
-            src={quickViewProduct.images.main}
-            alt={quickViewProduct.title}
+            src={image}
+            alt={title}
             className="w-full h-full object-cover"
           />
         </div>
@@ -46,7 +49,7 @@ export const QuickViewModal = () => {
               {quickViewProduct.category}
             </span>
             <h2 className="font-headline-sm text-headline-sm text-primary mb-2">
-              {quickViewProduct.title}
+              {title}
             </h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant font-medium mb-4">
               {quickViewProduct.priceFormatted}

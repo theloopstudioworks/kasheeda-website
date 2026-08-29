@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
+import { imageUrls } from '../../data/products';
 
 export const ProductGallery = ({ images, title }) => {
-  // Only list views that actually exist, so a single-image product doesn't
-  // render the same thumbnail four times.
   const imageList = useMemo(
     () =>
-      [
-        { label: 'Main View', url: images.main },
-        { label: 'Embroidery Detail', url: images.detail },
-        { label: 'Drape View', url: images.drape },
-        { label: 'Full View', url: images.full },
-      ].filter((img) => Boolean(img.url)),
+      imageUrls(images).map((url, i) => ({
+        label: i === 0 ? 'Main View' : `View ${i + 1}`,
+        url,
+      })),
     [images]
   );
 
