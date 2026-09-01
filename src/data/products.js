@@ -116,7 +116,7 @@ export const PRODUCTS = [
   },
   {
     id: "khaddi-chiffon-banarasi-3",
-    title: "Orange & Rani Khaddi Chiffon Banarasi Saree",
+    title: "Orange & Red Khaddi Chiffon Banarasi Saree",
     category: "Sarees",
     fabric: "Khaddi Chiffon Banarasi",
     price: 6999,
@@ -126,7 +126,7 @@ export const PRODUCTS = [
     occasion: "Wedding",
     isNew: true,
     description:
-      "A bright sunset orange body running into a deep rani pink pallu, joined by fine silver zari floral buta. The two-tone Banarasi khaddi is a haldi and mehendi favourite because the colour shift photographs beautifully in daylight.",
+      "A bright sunset orange body running into a deep red pallu, joined by fine silver zari floral buta. The two-tone Banarasi khaddi is a haldi and mehandi favourite because the colour shift photographs beautifully in daylight.",
     images: {
       main: "/sarees/orange-rani-khaddi-chiffon-banarasi-6999-1.jpg",
       detail: "/sarees/orange-rani-khaddi-chiffon-banarasi-6999-2.jpg",
@@ -134,7 +134,7 @@ export const PRODUCTS = [
     },
     details: [
       "Pure Khaddi Georgette (Banarasi handloom)",
-      "Two-tone orange body with rani pink pallu",
+      "Two-tone orange body with red pallu",
       "Silver zari buta and paisley border",
       "Blouse piece included",
       "Dry clean only"
@@ -164,21 +164,21 @@ export const PRODUCTS = [
   },
   {
     id: "khaddi-chiffon-banarasi-5",
-    title: "Mehendi & Rani Khaddi Chiffon Banarasi Saree",
+    title: "Mehandi & Red Khaddi Chiffon Banarasi Saree",
     category: "Sarees",
     fabric: "Khaddi Chiffon Banarasi",
     price: 6999,
     priceFormatted: "₹6,999",
-    color: "Mehendi Yellow",
+    color: "Mehandi Yellow",
     colorHex: "#b5a80a",
     occasion: "Wedding",
     isNew: true,
     description:
-      "A mehendi-green olive body with a rani pink pallu and border, carried on soft khaddi georgette. Silver zari buta sit lightly across the drape, keeping the contrast crisp rather than loud.",
+      "A mehandi-green olive body with a red pallu and border, carried on soft khaddi georgette. Silver zari buta sit lightly across the drape, keeping the contrast crisp rather than loud.",
     images: { main: "/sarees/khaddi-chiffon-banarasi-6999-3.png" },
     details: [
       "Pure Khaddi Georgette (Banarasi handloom)",
-      "Mehendi body with contrast rani pink pallu",
+      "Mehandi body with contrast red pallu",
       "Silver zari buta and woven border",
       "Blouse piece included",
       "Dry clean only"
@@ -273,21 +273,21 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "matka-silk",
-    title: "Rust Gold Tissue Matka Silk Saree",
+    id: "mutka-silk",
+    title: "Orange Tissue Mutka Silk Saree",
     category: "Sarees",
-    fabric: "Matka Silk",
+    fabric: "Mutka Silk",
     price: 7000,
     priceFormatted: "₹7,000",
-    color: "Rust Orange",
+    color: "Orange",
     colorHex: "#c85a17",
     occasion: "Wedding",
     isNew: false,
     description:
-      "Rust orange matka silk shot through with a broad molten-gold tissue band and fine orange stripes. The frayed handloom fringe is left raw on purpose — it is the mark of a genuine tissue weave.",
+      "Orange mutka silk shot through with a broad molten-gold tissue band and fine orange stripes. The frayed handloom fringe is left raw on purpose — it is the mark of a genuine tissue weave.",
     images: { main: "/sarees/matka-silk-7000.png" },
     details: [
-      "Handwoven Matka silk with tissue zari",
+      "Handwoven Mutka silk with tissue zari",
       "Wide antique gold tissue band",
       "Raw frayed handloom fringe",
       "Blouse piece included",
@@ -736,7 +736,7 @@ export const PRODUCTS = [
     occasion: "Festive",
     isNew: false,
     description:
-      "A glossy marigold satin silk edged with a scalloped kundan and pearl border, with matching paisley buti on the body. Built for haldi and mehendi mornings where yellow is the point.",
+      "A glossy marigold satin silk edged with a scalloped kundan and pearl border, with matching paisley buti on the body. Built for haldi and mehandi mornings where yellow is the point.",
     images: { main: "/sarees/ho-silk-3800.png" },
     details: [
       "Satin-finish silk",
