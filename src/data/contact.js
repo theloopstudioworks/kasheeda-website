@@ -9,9 +9,9 @@ export const WHATSAPP_NUMBER_DISPLAY = '+91 82720 37228';
 /** wa.me form: country code + number, digits only, no +, spaces or dashes. */
 export const WHATSAPP_NUMBER = '918272037228';
 
-/** Builds a wa.me deep link. `text` is pre-encoded by the caller. */
+/** Builds a wa.me deep link. `text` is plain text; encoded here. */
 export const whatsappLink = (text) =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 
 export const BOUTIQUE_ADDRESS = {
   line1: 'Phase 2, 234, Vasant Vihar',
