@@ -32,11 +32,18 @@ export const ProductDetailPage = () => {
   const isLiked = isInWishlist(product.id);
 
   const handleWhatsAppOrder = () => {
-    const message = `Hello Kasheeda Team,%0A%0AI would like to inquire about/order the following garment:%0A• *${title}*%0A• Color: ${
+    const message = `Hello Kasheeda Team,
+
+I would like to inquire about/order the following garment:
+• *${title}*
+• Color: ${
       selectedColor || product.color
-    }%0A• Price: ${
+    }
+• Price: ${
       product.priceFormatted
-    }%0A%0APlease assist me with custom sizing and order confirmation.`;
+    }
+
+Please assist me with custom sizing and order confirmation.`;
     window.open(whatsappLink(message), '_blank', 'noopener,noreferrer');
   };
 

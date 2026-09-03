@@ -26,10 +26,17 @@ export const CartDrawer = () => {
             item.product.price * item.quantity
           ).toLocaleString('en-IN')}`
       )
-      .join('%0A');
-    const message = `Hello Kasheeda Team,%0A%0AI would like to place an order for the following items:%0A${itemsList}%0A%0ATotal: ₹${cartTotal.toLocaleString(
+      .join('\n');
+    const message = `Hello Kasheeda Team,
+
+I would like to place an order for the following items:
+${itemsList}
+
+Total: ₹${cartTotal.toLocaleString(
       'en-IN'
-    )}%0A%0APlease confirm availability and shipping details.`;
+    )}
+
+Please confirm availability and shipping details.`;
 
     window.open(whatsappLink(message), '_blank', 'noopener,noreferrer');
   };
