@@ -240,12 +240,12 @@ export const PRODUCTS = [
     occasion: "Wedding",
     isNew: true,
     description:
-      "An ombré that moves from ivory through turmeric yellow into deep orange, with silver zari buta running the length of the drape. Made for haldi mornings, and equally at home at a daytime sangeet.",
+      "An ombré that moves from lemon through turmeric yellow into deep orange, with silver zari kadwa buti running the length of the drape. Made for haldi mornings, and equally at home at a daytime sangeet.",
     images: { main: "/sarees/khaddi-chiffon-banarasi-6999-6.png" },
     details: [
       "Pure Khaddi Georgette with shaded dyeing",
-      "Ivory to marigold to orange ombré",
-      "Silver zari buta and woven border",
+      "Lemon to marigold to orange ombré",
+      "Silver zari kadwa buti and woven border",
       "Blouse piece included",
       "Dry clean only"
     ]
@@ -419,7 +419,7 @@ export const PRODUCTS = [
     images: { main: "/sarees/chiffon-5000.png" },
     details: [
       "Pure chiffon with fine crush texture",
-      "Hand-set kundan and gold thread starburst buta",
+      "Gotta Patti work and gold thread starburst buta",
       "Lightweight, easy-drape fall",
       "Blouse piece included",
       "Dry clean only"
