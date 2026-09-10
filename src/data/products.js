@@ -415,7 +415,7 @@ export const PRODUCTS = [
     occasion: "Festive",
     isNew: true,
     description:
-      "Soft terracotta chiffon with hand-set kundan and gold starburst buta placed sparingly across the drape. The warm earthy rust reads beautifully in evening light and against gold jewellery.",
+      "Soft terracotta chiffon with Gotta Patti work and gold starburst buta placed sparingly across the drape. The warm earthy rust reads beautifully in evening light and against gold jewellery.",
     images: { main: "/sarees/chiffon-5000.png" },
     details: [
       "Pure chiffon with fine crush texture",
