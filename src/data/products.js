@@ -100,7 +100,7 @@ export const PRODUCTS = [
     occasion: "Wedding",
     isNew: true,
     description:
-      "A rich magenta khaddi georgette lit up by silver zari paisley along the border and pallu. The colour sits between rani pink and purple, which makes it unusually easy to pair with both silver and gold jewellery.",
+      "A rich magenta khaddi georgette lit up by silver zari kadwa buties along the border and pallu. The colour sits between rani pink and purple, which makes it unusually easy to pair with both silver and gold jewellery.",
     images: {
       main: "/sarees/magenta-khaddi-chiffon-banarasi-7499-1.jpg",
       detail: "/sarees/magenta-khaddi-chiffon-banarasi-7499-2.jpg",
@@ -125,6 +125,7 @@ export const PRODUCTS = [
     colorHex: "#ee4a1c",
     occasion: "Wedding",
     isNew: true,
+    isSoldOut: true,
     description:
       "A bright sunset orange body running into a deep red pallu, joined by fine silver zari floral buta. The two-tone Banarasi khaddi is a haldi and mehandi favourite because the colour shift photographs beautifully in daylight.",
     images: {
@@ -173,6 +174,7 @@ export const PRODUCTS = [
     colorHex: "#b5a80a",
     occasion: "Wedding",
     isNew: true,
+    isSoldOut: true,
     description:
       "A mehandi-green olive body with a red pallu and border, carried on soft khaddi georgette. Silver zari buta sit lightly across the drape, keeping the contrast crisp rather than loud.",
     images: { main: "/sarees/khaddi-chiffon-banarasi-6999-3.png" },
@@ -239,6 +241,7 @@ export const PRODUCTS = [
     colorHex: "#f2a01c",
     occasion: "Wedding",
     isNew: true,
+    isSoldOut: true,
     description:
       "An ombré that moves from lemon through turmeric yellow into deep orange, with silver zari kadwa buti running the length of the drape. Made for haldi mornings, and equally at home at a daytime sangeet.",
     images: { main: "/sarees/khaddi-chiffon-banarasi-6999-6.png" },

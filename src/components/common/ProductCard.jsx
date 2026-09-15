@@ -8,6 +8,7 @@ export const ProductCard = ({ product, color }) => {
   const { navigateTo, toggleWishlist, isInWishlist, setQuickViewProduct } = useShop();
 
   const isLiked = isInWishlist(product.id);
+  const soldOut = Boolean(product.isSoldOut);
 
   const variant = color && product.colorOptions?.find((o) => o.name === color);
   const shown = variant
@@ -63,7 +64,7 @@ export const ProductCard = ({ product, color }) => {
           }}
           className={`absolute inset-0 flex ${
             sliding ? 'transition-transform duration-[1400ms] ease-in-out' : ''
-          }`}
+          } ${soldOut ? 'grayscale contrast-125 brightness-75' : ''}`}
           style={{ transform: `translateX(-${slide * 100}%)` }}
         >
           {track.map((url, i) => (
@@ -72,17 +73,27 @@ export const ProductCard = ({ product, color }) => {
               src={url}
               alt={shown.title}
               aria-hidden={i !== slide}
-              className="w-full h-full shrink-0 object-cover transition-transform duration-700 group-hover:scale-105"
+              className={`w-full h-full shrink-0 object-cover transition-transform duration-700 group-hover:scale-105 ${
+                soldOut ? 'grayscale opacity-80' : ''
+              }`}
               loading="lazy"
             />
           ))}
         </div>
 
-        {/* NEW Badge */}
-        {product.isNew && (
+        {/* Badges */}
+        {soldOut ? (
+          <div className="absolute top-4 right-4 bg-surface/90 text-on-surface border border-outline px-2 py-1 font-label-caps text-[10px] rounded tracking-wider z-10">
+            SOLD OUT
+          </div>
+        ) : product.isNew ? (
           <div className="absolute top-4 right-4 bg-primary text-on-primary px-2 py-1 font-label-caps text-[10px] rounded tracking-wider z-10">
             NEW
           </div>
+        ) : null}
+
+        {soldOut && (
+          <div className="absolute inset-0 bg-black/20 z-10 pointer-events-none" />
         )}
 
         {/* Wishlist Heart Toggle */}
