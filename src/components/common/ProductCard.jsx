@@ -50,11 +50,14 @@ export const ProductCard = ({ product, color }) => {
   }, [sliding]);
 
   return (
-    <article className="group cursor-pointer flex flex-col h-full">
+    <article className={`group flex flex-col h-full ${soldOut ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
       <div className="relative aspect-[3/4] overflow-hidden bg-surface-container mb-4 rounded-sm">
         {/* Product Image(s) — a track that slides one frame at a time */}
         <div
-          onClick={() => navigateTo('detail', product.category, shown)}
+          onClick={() => {
+            if (soldOut) return;
+            navigateTo('detail', product.category, shown);
+          }}
           onTransitionEnd={(e) => {
             // The hover scale on each image bubbles up here too — ignore it.
             if (e.target === e.currentTarget && slide === track.length - 1) {
@@ -97,42 +100,48 @@ export const ProductCard = ({ product, color }) => {
         )}
 
         {/* Wishlist Heart Toggle */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleWishlist(product.id);
-          }}
-          aria-label={isLiked ? 'Remove from wishlist' : 'Add to wishlist'}
-          aria-pressed={isLiked}
-          className={`absolute z-10 top-4 left-4 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-primary transition-opacity duration-300 hover:bg-surface ${
-            isLiked ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-          }`}
-        >
-          <span
-            className={`material-symbols-outlined text-sm ${isLiked ? 'filled' : ''}`}
-          >
-            favorite
-          </span>
-        </button>
-
-        {/* Quick View Hover Overlay */}
-        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+        {!soldOut && (
           <button
             onClick={(e) => {
               e.stopPropagation();
-              setQuickViewProduct(shown);
+              toggleWishlist(product.id);
             }}
-            className="bg-surface/90 text-primary px-6 py-2 border border-secondary rounded font-label-caps text-label-caps hover:bg-primary hover:text-on-primary hover:border-primary transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 shadow-sm"
+            aria-label={isLiked ? 'Remove from wishlist' : 'Add to wishlist'}
+            aria-pressed={isLiked}
+            className={`absolute z-10 top-4 left-4 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-primary transition-opacity duration-300 hover:bg-surface ${
+              isLiked ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+            }`}
           >
-            Quick View
+            <span
+              className={`material-symbols-outlined text-sm ${isLiked ? 'filled' : ''}`}
+            >
+              favorite
+            </span>
           </button>
-        </div>
+        )}
+
+        {/* Quick View Hover Overlay */}
+        {!soldOut && (
+          <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setQuickViewProduct(shown);
+              }}
+              className="bg-surface/90 text-primary px-6 py-2 border border-secondary rounded font-label-caps text-label-caps hover:bg-primary hover:text-on-primary hover:border-primary transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 shadow-sm"
+            >
+              Quick View
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Card Info */}
       <div
         className="text-center px-2 flex flex-col flex-grow justify-between"
-        onClick={() => navigateTo('detail', product.category, shown)}
+        onClick={() => {
+          if (!soldOut) navigateTo('detail', product.category, shown);
+        }}
       >
         <div>
           <span className="font-label-caps text-[10px] text-on-surface-variant/80 uppercase tracking-widest block mb-1">
