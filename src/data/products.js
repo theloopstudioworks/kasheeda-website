@@ -360,17 +360,17 @@ export const PRODUCTS = [
   },
   {
     id: "green-mango-silk-2",
-    title: "Olive Gold Green Mango Silk Saree",
+    title: "Grey Gold Green Mango Silk Saree",
     category: "Sarees",
     fabric: "Green Mango Silk",
     price: 5500,
     priceFormatted: "₹5,500",
-    color: "Olive Gold",
+    color: "Grey Gold",
     colorHex: "#8b8158",
     occasion: "Wedding",
     isNew: false,
     description:
-      "An unusual olive-gold tissue body carrying large meenakari buta, set against a wine purple border and pallu. The muted body with a jewel-toned border is a quieter way to wear a formal silk.",
+      "An unusual grey-gold tissue body carrying large meenakari buta, set against a wine purple border and pallu. The muted body with a jewel-toned border is a quieter way to wear a formal silk. This keeps the gold, meenakari buta, wine purple border and pallu, and the overall meaning intact—just removes the incorrect “olive” reference.",
     images: { main: "/sarees/green-mango-silk-5500-2.png" },
     details: [
       "Tissue silk with gold shot texture",
@@ -440,7 +440,7 @@ export const PRODUCTS = [
     occasion: "Festive",
     isNew: true,
     description:
-      "Marigold mustard chiffon dotted with small silver leaf buti and finished with a delicately ruffled edge. Bright without being heavy — a natural pick for daytime pujas and haldi functions.",
+      "Marigold mustard chiffon adorned with intricate cutdana and pearl handwork all over, accented with small silver leaf buti. Bright without being heavy — a natural pick for daytime pujas and haldi functions.",
     images: {
       main: "/sarees/marigold-silver-leaf-chiffon-5000-1.jpg",
       detail: "/sarees/marigold-silver-leaf-chiffon-5000-2.jpg",
@@ -515,7 +515,7 @@ export const PRODUCTS = [
     occasion: "Festive",
     isNew: false,
     description:
-      "Dusty rose tissue chiffon with a corner spray of gold gota and zardozi leaves climbing the pallu. A single flower buta sits on the body, keeping the design asymmetric and modern.",
+      "Dusty rose tissue chiffon featuring intricate Gotta Patti work all over, with delicate floral butis scattered across the saree. The evenly distributed detailing creates a graceful, elegant look with a subtle yet festive appeal.",
     images: { main: "/sarees/chiffon-4500.png" },
     details: [
       "Tissue chiffon with soft crush",
