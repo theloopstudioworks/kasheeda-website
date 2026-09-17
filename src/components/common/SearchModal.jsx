@@ -14,9 +14,10 @@ export const SearchModal = () => {
   const filteredProducts = query.trim()
     ? PRODUCTS.filter(
         (p) =>
-          p.title.toLowerCase().includes(query.toLowerCase()) ||
-          p.category.toLowerCase().includes(query.toLowerCase()) ||
-          p.description.toLowerCase().includes(query.toLowerCase())
+          !p.isHidden &&
+          (p.title.toLowerCase().includes(query.toLowerCase()) ||
+            p.category.toLowerCase().includes(query.toLowerCase()) ||
+            p.description.toLowerCase().includes(query.toLowerCase()))
       )
     : [];
 
@@ -58,17 +59,22 @@ export const SearchModal = () => {
                 <div
                   key={product.id}
                   onClick={() => {
+                    if (product.isSoldOut) return;
                     setIsSearchOpen(false);
                     navigateTo('detail', product.category, product);
                   }}
-                  className="flex items-center gap-4 p-2 hover:bg-surface-container rounded cursor-pointer transition-colors"
+                  className={`flex items-center gap-4 p-2 rounded transition-colors ${
+                    product.isSoldOut
+                      ? 'cursor-not-allowed opacity-75'
+                      : 'hover:bg-surface-container cursor-pointer'
+                  }`}
                 >
                   <img
                     src={product.images.main}
                     alt={product.title}
                     className="w-12 h-16 object-cover rounded"
                   />
-                  <div>
+                  <div className="flex-1">
                     <h4 className="font-headline-sm text-sm text-primary">
                       {product.title}
                     </h4>
@@ -76,6 +82,11 @@ export const SearchModal = () => {
                       {product.category} • {product.priceFormatted}
                     </p>
                   </div>
+                  {product.isSoldOut && (
+                    <span className="font-label-caps text-[10px] tracking-wider text-on-surface-variant border border-outline px-2 py-1 rounded">
+                      SOLD OUT
+                    </span>
+                  )}
                 </div>
               ))
             )}
