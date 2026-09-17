@@ -19,6 +19,9 @@ export const CatalogPage = () => {
   // Filter products dynamically
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
+      if (product.isHidden) {
+        return false;
+      }
       // Category filter
       if (selectedCategory !== 'All' && product.category !== selectedCategory) {
         return false;

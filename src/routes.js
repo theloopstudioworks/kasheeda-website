@@ -14,7 +14,8 @@ export const pathFor = (page, { category = 'All', product, infoKey } = {}) => {
 // Anything unrecognised falls back to home rather than a 404 screen.
 export const stateFromPath = (pathname) => {
   const [first, second] = pathname.replace(/^\/+|\/+$/g, '').split('/');
-  const product = first === 'product' && PRODUCTS.find((p) => p.id === second);
+  const product =
+    first === 'product' && PRODUCTS.find((p) => p.id === second && !p.isHidden);
   if (product) return { page: 'detail', category: product.category, product };
   if (CATALOG_PATHS[first]) return { page: 'catalog', category: CATALOG_PATHS[first] };
   if (first === 'blogs') return { page: 'blog' };

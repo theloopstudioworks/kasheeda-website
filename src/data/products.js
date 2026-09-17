@@ -330,6 +330,7 @@ export const PRODUCTS = [
     colorHex: "#949a9c",
     occasion: "Wedding",
     isNew: false,
+    isHidden: true,
     description:
       "A liquid tissue silk with a trailing vine of gold and ivory zardozi flowers worked along the border. Available in silver grey and ivory beige — understated in colour, generous in handwork, a good cocktail or reception saree.",
     colorOptions: [
@@ -773,17 +774,17 @@ export const PRODUCTS = [
   },
   {
     id: "banarasi-cotton",
-    title: "Parrot Green Banarasi Cotton Saree",
+    title: "Green Banarasi Cotton Saree",
     category: "Sarees",
     fabric: "Banarasi Cotton",
     price: 2499,
     priceFormatted: "₹2,499",
-    color: "Parrot Green",
+    color: "Green",
     colorHex: "#2f9e63",
     occasion: "Festive",
     isNew: false,
     description:
-      "Parrot green Banarasi cotton with gold zari floral buta and a wide woven border running down the length. Multicolour tassels at the pallu keep it cheerful. Light enough for all-day wear.",
+      "Green Banarasi cotton with gold zari floral buta and a wide woven border running down the length. Multicolour tassels at the pallu keep it cheerful. Light enough for all-day wear.",
     images: { main: "/sarees/banarasi-cotton-2499.png" },
     details: [
       "Banarasi cotton-silk blend",
@@ -980,6 +981,7 @@ export const PRODUCTS = [
     colorHex: "#a06a2a",
     occasion: "Daily Wear",
     isNew: false,
+    isSoldOut: true,
     description:
       "Rust caramel Kota Doria layered with bands of black and ivory leaf and diamond block prints, with teal accents and a gold zari stripe. The open Kota square weave keeps it airy in summer.",
     images: { main: "/sarees/kota-doria-1900.png" },
