@@ -67,7 +67,7 @@ export const ProductCard = ({ product, color }) => {
           }}
           className={`absolute inset-0 flex ${
             sliding ? 'transition-transform duration-[1400ms] ease-in-out' : ''
-          } ${soldOut ? 'grayscale contrast-125 brightness-75' : ''}`}
+          } ${soldOut ? 'saturate-0 contrast-125 brightness-75' : ''}`}
           style={{ transform: `translateX(-${slide * 100}%)` }}
         >
           {track.map((url, i) => (
@@ -77,7 +77,7 @@ export const ProductCard = ({ product, color }) => {
               alt={shown.title}
               aria-hidden={i !== slide}
               className={`w-full h-full shrink-0 object-cover transition-transform duration-700 group-hover:scale-105 ${
-                soldOut ? 'grayscale opacity-80' : ''
+                soldOut ? 'saturate-0 opacity-80' : ''
               }`}
               loading="lazy"
             />
