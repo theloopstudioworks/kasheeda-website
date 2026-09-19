@@ -52,6 +52,9 @@ export const CatalogPage = () => {
       }
       return true;
     }).sort((a, b) => {
+      if (Boolean(a.isSoldOut) !== Boolean(b.isSoldOut)) {
+        return a.isSoldOut ? 1 : -1;
+      }
       if (sortBy === 'price-high') return b.price - a.price;
       if (sortBy === 'price-low') return a.price - b.price;
       if (sortBy === 'newest') return (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0);
